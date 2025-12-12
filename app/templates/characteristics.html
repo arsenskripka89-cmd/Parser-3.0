@@ -174,16 +174,34 @@
                 </div>
                 <div class="mb-4" id="characteristicChoicesContainer" style="display: none;">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Варіанти вибору</label>
-                    <div class="flex gap-2 mb-2">
-                        <input type="text" id="characteristicChoiceInput" placeholder="Введіть варіант"
-                               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <input type="url" id="characteristicChoicePhotoInput" placeholder="URL фото (тільки для Бренд)"
-                               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                               style="display: none;">
-                        <button type="button" id="addCharacteristicChoiceBtn" 
-                                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
-                            Додати
-                        </button>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex gap-2">
+                            <input type="text" id="characteristicChoiceInput" placeholder="Введіть варіант"
+                                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button type="button" id="addCharacteristicChoiceBtn"
+                                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
+                                Додати
+                            </button>
+                        </div>
+                        <div id="characteristicPhotoControls" class="flex flex-wrap items-center gap-2 hidden">
+                            <input type="hidden" id="characteristicChoicePhotoInput">
+                            <input type="file" id="characteristicChoicePhotoFileInput" accept="image/*" class="hidden">
+                            <button type="button" id="characteristicChoiceUploadBtn"
+                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 rounded-lg font-medium transition">
+                                Завантажити фото
+                            </button>
+                            <button type="button" id="characteristicChoiceUrlBtn"
+                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 rounded-lg font-medium transition">
+                                Додати URL
+                            </button>
+                            <button type="button" id="characteristicChoiceClearBtn"
+                                    class="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg font-medium transition">
+                                Очистити фото
+                            </button>
+                        </div>
+                        <div id="characteristicChoicePhotoPreview" class="hidden rounded-lg border border-dashed border-gray-200 bg-gray-50 p-3">
+                            <p class="text-xs text-gray-500">Фото не вибране</p>
+                        </div>
                     </div>
                     <div id="characteristicChoicesList" class="space-y-2 min-h-[50px] border border-gray-200 rounded-lg p-3 bg-gray-50">
                         <p class="text-xs text-gray-500 text-center py-2">Список варіантів порожній</p>

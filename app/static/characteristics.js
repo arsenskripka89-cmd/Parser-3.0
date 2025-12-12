@@ -1310,21 +1310,19 @@ function fillCharacteristicForm(char) {
     // Показуємо поле варіантів для choice, variation та brand
     if (char.type === 'choice' || char.type === 'variation' || char.type === 'brand') {
         choicesContainer.style.display = 'block';
-        const photoInput = document.getElementById('characteristicChoicePhotoInput');
         if (char.type === 'brand') {
             // Для типу "brand" використовуємо brand_choices (масив об'єктів)
             characteristicChoicesList = char.brand_choices || [];
-            if (photoInput) photoInput.style.display = 'block';
+            toggleBrandPhotoInputs(true);
         } else {
             // Для інших типів використовуємо choices (масив рядків)
             characteristicChoicesList = char.choices || [];
-            if (photoInput) photoInput.style.display = 'none';
+            toggleBrandPhotoInputs(false);
         }
         updateCharacteristicChoicesList();
     } else {
         choicesContainer.style.display = 'none';
-        const photoInput = document.getElementById('characteristicChoicePhotoInput');
-        if (photoInput) photoInput.style.display = 'none';
+        toggleBrandPhotoInputs(false);
     }
     
     // Відновлюємо вибрані категорії
@@ -1386,6 +1384,98 @@ window.openEditGroupModal = openEditGroupModal;
 // Масив для зберігання варіантів характеристики
 let characteristicChoicesList = [];
 
+function updateCharacteristicChoicePhotoPreview() {
+    const preview = document.getElementById('characteristicChoicePhotoPreview');
+    const photoInput = document.getElementById('characteristicChoicePhotoInput');
+    if (!preview) return;
+
+    const value = (photoInput?.value || '').trim();
+    if (!value) {
+        preview.innerHTML = '<p class="text-xs text-gray-500">Фото не вибране</p>';
+        return;
+    }
+
+    preview.innerHTML = `
+        <div class="flex items-center gap-3">
+            <img src="${escapeHtml(value)}" alt="Попередній перегляд" class="w-14 h-14 rounded border border-gray-300 object-cover">
+            <div class="text-xs text-gray-700 break-all">${escapeHtml(value)}</div>
+        </div>
+    `;
+}
+
+function setCharacteristicChoicePhotoValue(value) {
+    const photoInput = document.getElementById('characteristicChoicePhotoInput');
+    if (photoInput) {
+        photoInput.value = value || '';
+    }
+    updateCharacteristicChoicePhotoPreview();
+}
+
+function handleCharacteristicPhotoFileChange(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const result = e.target?.result;
+        if (typeof result === 'string') {
+            setCharacteristicChoicePhotoValue(result);
+            showToast('✅ Фото успішно завантажено', 'success');
+        }
+    };
+    reader.onerror = () => {
+        showToast('❌ Не вдалося прочитати файл', 'error');
+    };
+    reader.readAsDataURL(file);
+}
+
+function promptCharacteristicPhotoUrl() {
+    const url = prompt('Введіть URL фото');
+    if (!url) return;
+
+    if (!isValidHttpUrl(url)) {
+        showToast('❌ Невірний формат URL', 'error');
+        return;
+    }
+
+    setCharacteristicChoicePhotoValue(url.trim());
+    showToast('✅ URL фото збережено', 'success');
+}
+
+function clearCharacteristicPhotoSelection() {
+    const fileInput = document.getElementById('characteristicChoicePhotoFileInput');
+    if (fileInput) {
+        fileInput.value = '';
+    }
+    setCharacteristicChoicePhotoValue('');
+}
+
+function toggleBrandPhotoInputs(isVisible) {
+    const controls = document.getElementById('characteristicPhotoControls');
+    const preview = document.getElementById('characteristicChoicePhotoPreview');
+    const fileInput = document.getElementById('characteristicChoicePhotoFileInput');
+
+    if (isVisible) {
+        controls?.classList.remove('hidden');
+        preview?.classList.remove('hidden');
+        updateCharacteristicChoicePhotoPreview();
+    } else {
+        controls?.classList.add('hidden');
+        preview?.classList.add('hidden');
+        if (fileInput) fileInput.value = '';
+        setCharacteristicChoicePhotoValue('');
+    }
+}
+
+function isValidHttpUrl(value) {
+    try {
+        const url = new URL(value);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch (e) {
+        return false;
+    }
+}
+
 // Додавання варіанту до списку
 function addCharacteristicChoice() {
     const input = document.getElementById('characteristicChoiceInput');
@@ -1402,7 +1492,7 @@ function addCharacteristicChoice() {
     // Для типу "brand" перевіряємо, чи не додано вже варіант з такою назвою
     if (type === 'brand') {
         const photoUrl = photoInput ? photoInput.value.trim() : '';
-        const exists = characteristicChoicesList.some(c => 
+        const exists = characteristicChoicesList.some(c =>
             (typeof c === 'string' ? c === choice : c.name === choice)
         );
         if (exists) {
@@ -1411,7 +1501,9 @@ function addCharacteristicChoice() {
         }
         characteristicChoicesList.push({ name: choice, photo_url: photoUrl || null });
         input.value = '';
-        if (photoInput) photoInput.value = '';
+        setCharacteristicChoicePhotoValue('');
+        const fileInput = document.getElementById('characteristicChoicePhotoFileInput');
+        if (fileInput) fileInput.value = '';
     } else {
         // Для інших типів (choice, variation) - просто рядки
         if (characteristicChoicesList.includes(choice)) {
@@ -1652,6 +1744,7 @@ function openAddCharacteristicModal() {
     document.getElementById('characteristicModalId').value = '';
     document.getElementById('characteristicUnitContainer').style.display = 'none';
     document.getElementById('characteristicChoicesContainer').style.display = 'none';
+    toggleBrandPhotoInputs(false);
     characteristicChoicesList = [];
     updateCharacteristicChoicesList();
     document.getElementById('characteristicModal').classList.remove('hidden');
@@ -2286,7 +2379,6 @@ function initCharacteristicsHandlers() {
     document.getElementById('characteristicType')?.addEventListener('change', (e) => {
         const unitContainer = document.getElementById('characteristicUnitContainer');
         const choicesContainer = document.getElementById('characteristicChoicesContainer');
-        const photoInput = document.getElementById('characteristicChoicePhotoInput');
         const type = e.target.value;
         
         if (type === 'number') {
@@ -2297,24 +2389,25 @@ function initCharacteristicsHandlers() {
         
         if (type === 'choice' || type === 'variation' || type === 'brand') {
             choicesContainer.style.display = 'block';
-            if (type === 'brand' && photoInput) {
-                photoInput.style.display = 'block';
-            } else if (photoInput) {
-                photoInput.style.display = 'none';
-                photoInput.value = '';
-            }
+            toggleBrandPhotoInputs(type === 'brand');
         } else {
             choicesContainer.style.display = 'none';
-            if (photoInput) {
-                photoInput.style.display = 'none';
-                photoInput.value = '';
-            }
+            toggleBrandPhotoInputs(false);
         }
         
         // Очищаємо список варіантів при зміні типу
         characteristicChoicesList = [];
         updateCharacteristicChoicesList();
     });
+
+    document.getElementById('characteristicChoiceUploadBtn')?.addEventListener('click', () => {
+        const fileInput = document.getElementById('characteristicChoicePhotoFileInput');
+        fileInput?.click();
+    });
+
+    document.getElementById('characteristicChoicePhotoFileInput')?.addEventListener('change', handleCharacteristicPhotoFileChange);
+    document.getElementById('characteristicChoiceUrlBtn')?.addEventListener('click', promptCharacteristicPhotoUrl);
+    document.getElementById('characteristicChoiceClearBtn')?.addEventListener('click', clearCharacteristicPhotoSelection);
     
     // Додавання варіанту характеристики
     document.getElementById('addCharacteristicChoiceBtn')?.addEventListener('click', addCharacteristicChoice);

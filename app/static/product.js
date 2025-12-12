@@ -1059,7 +1059,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('characteristicType')?.addEventListener('change', (e) => {
         const unitContainer = document.getElementById('characteristicUnitContainer');
         const choicesContainer = document.getElementById('characteristicChoicesContainer');
-        const photoInput = document.getElementById('characteristicChoicePhotoInput');
         const type = e.target.value;
         
         if (type === 'number') {
@@ -1070,17 +1069,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (type === 'choice' || type === 'variation' || type === 'brand') {
             if (choicesContainer) choicesContainer.style.display = 'block';
-            if (type === 'brand' && photoInput) {
-                photoInput.style.display = 'block';
-            } else if (photoInput) {
-                photoInput.style.display = 'none';
-                photoInput.value = '';
+            if (typeof toggleBrandPhotoInputs === 'function') {
+                toggleBrandPhotoInputs(type === 'brand');
             }
         } else {
             if (choicesContainer) choicesContainer.style.display = 'none';
-            if (photoInput) {
-                photoInput.style.display = 'none';
-                photoInput.value = '';
+            if (typeof toggleBrandPhotoInputs === 'function') {
+                toggleBrandPhotoInputs(false);
             }
         }
         

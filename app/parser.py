@@ -1267,10 +1267,12 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                     page_type = "unknown"
                     raw_products = []
                     raw_categories = []
+                    pagination_urls = []
                     if isinstance(parsed, dict):
                         page_type = (parsed.get("page_type") or "unknown")
                         raw_products = parsed.get("products") or []
                         raw_categories = parsed.get("categories") or []
+                        pagination_urls = parsed.get("pagination_urls") or []
                     elif isinstance(parsed, list):
                         # backward compatibility (якщо десь ще повертається старий формат)
                         raw_products = parsed
@@ -1337,7 +1339,21 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                             deeper_products.extend(crawl_listing(sub_url, depth + 1, max_depth, max_pages))
                         return deeper_products
 
-                    return filtered_products
+                    # 3) Пагінація / "сторінка 2" / "load more"
+                    # Підлаштовується під будь-який сайт: GPTClient повертає pagination_urls, зібрані з HTML.
+                    all_products: list = list(filtered_products)
+                    if pagination_urls:
+                        for next_url in pagination_urls:
+                            next_norm = normalize_url(next_url)
+                            if not next_norm:
+                                continue
+                            if next_norm in visited_listing_urls:
+                                continue
+                            if len(visited_listing_urls) >= max_pages:
+                                break
+                            all_products.extend(crawl_listing(next_norm, depth, max_depth, max_pages))
+
+                    return all_products
 
                 # Парсимо (і за потреби провалюємось у підкатегорії), але не більше N сторінок
                 products = crawl_listing(

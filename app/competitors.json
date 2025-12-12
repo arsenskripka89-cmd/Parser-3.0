@@ -1,0 +1,773 @@
+{
+  "competitors": [
+    {
+      "id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "name": "Кентавр",
+      "url": "https://kentavr.ua/",
+      "categories": [
+        {
+          "id": "uhod-za-sadom",
+          "name": "Догляд за садом",
+          "url": "https://kentavr.ua/uhod-za-sadom/",
+          "children": [
+            {
+              "id": "drovokoly",
+              "name": "Дровоколи",
+              "url": "https://kentavr.ua/uhod-za-sadom/drovokoly/",
+              "children": []
+            },
+            {
+              "id": "benzopily-sad",
+              "name": "Бензопили садові",
+              "url": "https://kentavr.ua/uhod-za-sadom/benzopily-sad/",
+              "children": []
+            },
+            {
+              "id": "elsaw-sad",
+              "name": "Електропили садові",
+              "url": "https://kentavr.ua/uhod-za-sadom/elsaw-sad/",
+              "children": []
+            },
+            {
+              "id": "stanki-zatochki-tsepey",
+              "name": "Станки для заточки ланцюгів",
+              "url": "https://kentavr.ua/uhod-za-sadom/stanki-zatochki-tsepey/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "traktory",
+          "name": "Трактори",
+          "url": "https://kentavr.ua/traktory/",
+          "children": []
+        },
+        {
+          "id": "motobloki",
+          "name": "Мотоблоки",
+          "url": "https://kentavr.ua/motobloki/",
+          "children": [
+            {
+              "id": "benzinovyye-motobloki",
+              "name": "Бензинові мотоблоки",
+              "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/",
+              "children": []
+            },
+            {
+              "id": "dizelnyye-motobloki",
+              "name": "Дизельні мотоблоки",
+              "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/",
+              "children": []
+            },
+            {
+              "id": "motobloki-s-vodyanym-ohlazhdeniyem",
+              "name": "Мотоблоки з водяним охолодженням",
+              "url": "https://kentavr.ua/motobloki/motobloki-s-vodyanym-ohlazhdeniyem/",
+              "children": []
+            },
+            {
+              "id": "motobloki-s-vozdushnym-ohlazhdeniyem",
+              "name": "Мотоблоки з повітряним охолодженням",
+              "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "kultivatory",
+          "name": "Культиватори",
+          "url": "https://kentavr.ua/kultivatory/",
+          "children": [
+            {
+              "id": "motokultivatory",
+              "name": "Мотокультиватори",
+              "url": "https://kentavr.ua/kultivatory/motokultivatory/",
+              "children": []
+            },
+            {
+              "id": "el-kultivator",
+              "name": "Електрокультиватори",
+              "url": "https://kentavr.ua/kultivatory/el-kultivator/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "nav-oborudovaniye",
+          "name": "Навісне обладнання",
+          "url": "https://kentavr.ua/nav-oborudovaniye/",
+          "children": [
+            {
+              "id": "gruntozatsepy",
+              "name": "Грунтозачепи",
+              "url": "https://kentavr.ua/nav-oborudovaniye/gruntozatsepy/",
+              "children": []
+            },
+            {
+              "id": "kartofelekopalki",
+              "name": "Картоплекопалки",
+              "url": "https://kentavr.ua/nav-oborudovaniye/kartofelekopalki/",
+              "children": []
+            },
+            {
+              "id": "okuchniki",
+              "name": "Окучники",
+              "url": "https://kentavr.ua/nav-oborudovaniye/okuchniki/",
+              "children": []
+            },
+            {
+              "id": "ploskorezy",
+              "name": "Плоскорізи",
+              "url": "https://kentavr.ua/nav-oborudovaniye/ploskorezy/",
+              "children": []
+            },
+            {
+              "id": "kosilki",
+              "name": "Косарки",
+              "url": "https://kentavr.ua/nav-oborudovaniye/kosilki/",
+              "children": []
+            },
+            {
+              "id": "kartofelesazhalki",
+              "name": "Картоплесаджалки",
+              "url": "https://kentavr.ua/nav-oborudovaniye/kartofelesazhalki/",
+              "children": []
+            },
+            {
+              "id": "plugi",
+              "name": "Плуги",
+              "url": "https://kentavr.ua/nav-oborudovaniye/plugi/",
+              "children": []
+            },
+            {
+              "id": "frezy",
+              "name": "Фрези",
+              "url": "https://kentavr.ua/nav-oborudovaniye/frezy/",
+              "children": []
+            },
+            {
+              "id": "pritsepy",
+              "name": "Причепи",
+              "url": "https://kentavr.ua/nav-oborudovaniye/pritsepy/",
+              "children": []
+            },
+            {
+              "id": "stsepki",
+              "name": "Зчіпки",
+              "url": "https://kentavr.ua/nav-oborudovaniye/stsepki/",
+              "children": []
+            },
+            {
+              "id": "seyalki",
+              "name": "Сівалки",
+              "url": "https://kentavr.ua/nav-oborudovaniye/seyalki/",
+              "children": [],
+              "needs_manual_check": true
+            },
+            {
+              "id": "stupitsy",
+              "name": "Ступиці",
+              "url": "https://kentavr.ua/nav-oborudovaniye/stupitsy/",
+              "children": [],
+              "needs_manual_check": true
+            }
+          ]
+        },
+        {
+          "id": "garden-tools",
+          "name": "Догляд за газоном",
+          "url": "https://kentavr.ua/garden-tools/",
+          "children": [
+            {
+              "id": "motokosy",
+              "name": "Мотокоси",
+              "url": "https://kentavr.ua/garden-tools/motokosy/",
+              "children": []
+            },
+            {
+              "id": "elektrokosy",
+              "name": "Електрокоси",
+              "url": "https://kentavr.ua/garden-tools/elektrokosy/",
+              "children": []
+            },
+            {
+              "id": "trimmery",
+              "name": "Тримери",
+              "url": "https://kentavr.ua/garden-tools/trimmery/",
+              "children": []
+            },
+            {
+              "id": "gazonokosilki-elektro",
+              "name": "Газонокосарки електричні",
+              "url": "https://kentavr.ua/garden-tools/gazonokosilki-elektro/",
+              "children": []
+            },
+            {
+              "id": "aksessuary-dlya-motokos",
+              "name": "Аксесуари для мотокос",
+              "url": "https://kentavr.ua/garden-tools/aksessuary-dlya-motokos/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "weld-app",
+          "name": "Зварювальні апарати",
+          "url": "https://kentavr.ua/weld-app/",
+          "children": [
+            {
+              "id": "mma-inv-tipa",
+              "name": "ММА інверторного типу",
+              "url": "https://kentavr.ua/weld-app/mma-inv-tipa/",
+              "children": []
+            },
+            {
+              "id": "mig-mma-inv-tipa",
+              "name": "MIG/ММА інверторного типу",
+              "url": "https://kentavr.ua/weld-app/mig-mma-inv-tipa/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "motopompy",
+          "name": "Мотопомпи",
+          "url": "https://kentavr.ua/motopompy/",
+          "children": []
+        },
+        {
+          "id": "generators",
+          "name": "Генератори",
+          "url": "https://kentavr.ua/generators/",
+          "children": [
+            {
+              "id": "generator-benz",
+              "name": "Генератори бензинові",
+              "url": "https://kentavr.ua/generators/generator-benz/",
+              "children": []
+            },
+            {
+              "id": "generatory-gazbenz",
+              "name": "Генератори газ/бензин",
+              "url": "https://kentavr.ua/generators/generatory-gazbenz/",
+              "children": []
+            },
+            {
+              "id": "generatory-dizel",
+              "name": "Генератори дизельні",
+              "url": "https://kentavr.ua/generators/generatory-dizel/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "dvigateli",
+          "name": "Двигуни",
+          "url": "https://kentavr.ua/dvigateli/",
+          "children": []
+        },
+        {
+          "id": "moyki-v-davleniya",
+          "name": "Мийки високого тиску",
+          "url": "https://kentavr.ua/moyki-v-davleniya/",
+          "children": []
+        },
+        {
+          "id": "kompressory",
+          "name": "Компресори",
+          "url": "https://kentavr.ua/kompressory/",
+          "children": [
+            {
+              "id": "kompressor-avto",
+              "name": "Компресори автомобільні",
+              "url": "https://kentavr.ua/kompressory/kompressor-avto/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "pusk-zaryad-ustroystva",
+          "name": "Пуско-зарядні пристрої",
+          "url": "https://kentavr.ua/pusk-zaryad-ustroystva/",
+          "children": [
+            {
+              "id": "zaryad-ustroystva",
+              "name": "Зарядні пристрої",
+              "url": "https://kentavr.ua/pusk-zaryad-ustroystva/zaryad-ustroystva/",
+              "children": []
+            },
+            {
+              "id": "pusk-zaryad-ustr",
+              "name": "Пуско-зарядні пристрої",
+              "url": "https://kentavr.ua/pusk-zaryad-ustroystva/pusk-zaryad-ustr/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "stroy-oborudovaniye",
+          "name": "Будівельне обладнання",
+          "url": "https://kentavr.ua/stroy-oborudovaniye/",
+          "children": [
+            {
+              "id": "zatirochnyye-mashiny",
+              "name": "Затиральні машини",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/zatirochnyye-mashiny/",
+              "children": []
+            },
+            {
+              "id": "betonomeshalki",
+              "name": "Бетономішалки",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/betonomeshalki/",
+              "children": []
+            },
+            {
+              "id": "vibroplity",
+              "name": "Віброплити",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/vibroplity/",
+              "children": []
+            },
+            {
+              "id": "vibrotrambovki",
+              "name": "Вібротрамбовки",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/vibrotrambovki/",
+              "children": []
+            },
+            {
+              "id": "shvonarezchiki",
+              "name": "Швонарізувачі",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/shvonarezchiki/",
+              "children": []
+            },
+            {
+              "id": "glubinnyye-vibratory",
+              "name": "Глибинні вібратори",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/glubinnyye-vibratory/",
+              "children": []
+            },
+            {
+              "id": "ploshchad-vibr",
+              "name": "Майданчикові вібратори",
+              "url": "https://kentavr.ua/stroy-oborudovaniye/ploshchad-vibr/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "lestnitsy",
+          "name": "Драбини",
+          "url": "https://kentavr.ua/lestnitsy/",
+          "children": [
+            {
+              "id": "lestnitsy-2st",
+              "name": "Драбини двосторонні",
+              "url": "https://kentavr.ua/lestnitsy/lestnitsy-2st/",
+              "children": []
+            },
+            {
+              "id": "lestnitsy-uni",
+              "name": "Драбини універсальні",
+              "url": "https://kentavr.ua/lestnitsy/lestnitsy-uni/",
+              "children": []
+            },
+            {
+              "id": "stremyanki",
+              "name": "Стремянки",
+              "url": "https://kentavr.ua/lestnitsy/stremyanki/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "lod-motory",
+          "name": "Мотори човнові",
+          "url": "https://kentavr.ua/lod-motory/",
+          "children": []
+        },
+        {
+          "id": "motobury",
+          "name": "Мотобури",
+          "url": "https://kentavr.ua/motobury/",
+          "children": [
+            {
+              "id": "motoburs",
+              "name": "Мотобури",
+              "url": "https://kentavr.ua/motobury/motoburs/",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "arhiv",
+          "name": "Архів продукції",
+          "url": "https://kentavr.ua/arhiv/",
+          "children": [
+            {
+              "id": "arhiv-stroitelnoye-oborudovaniye",
+              "name": "Будівельне обладнання",
+              "url": "https://kentavr.ua/arhiv/arhiv-stroitelnoye-oborudovaniye/",
+              "children": []
+            },
+            {
+              "id": "generatory-arch",
+              "name": "Генератори",
+              "url": "https://kentavr.ua/arhiv/generatory-arch/",
+              "children": []
+            },
+            {
+              "id": "dvigateli-archiv",
+              "name": "Двигуни",
+              "url": "https://kentavr.ua/arhiv/dvigateli-archiv/",
+              "children": []
+            },
+            {
+              "id": "lestnitsy-1",
+              "name": "Драбини",
+              "url": "https://kentavr.ua/arhiv/lestnitsy-1/",
+              "children": []
+            },
+            {
+              "id": "kompressory-1",
+              "name": "Компресори",
+              "url": "https://kentavr.ua/arhiv/kompressory-1/",
+              "children": []
+            },
+            {
+              "id": "motopompy-archiv",
+              "name": "Мотопомпи",
+              "url": "https://kentavr.ua/arhiv/motopompy-archiv/",
+              "children": []
+            },
+            {
+              "id": "svarochnyye-apparaty",
+              "name": "Зварювальні апарати",
+              "url": "https://kentavr.ua/arhiv/svarochnyye-apparaty/",
+              "children": []
+            },
+            {
+              "id": "uhod-za-gazonom",
+              "name": "Догляд за газоном",
+              "url": "https://kentavr.ua/arhiv/uhod-za-gazonom/",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "last_parsed": "2025-12-08T07:56:12.052407",
+      "notes": "",
+      "active": true
+    },
+    {
+      "id": "779d1266-04a5-4a93-9f5d-15039fd3c438",
+      "name": "Romb",
+      "url": "https://romb.ua/",
+      "categories": [
+        {
+          "id": "selxoz-minitexnika",
+          "name": "Сельхозтехника",
+          "url": "https://romb.ua/ru/selxoz-minitexnika.html",
+          "children": [
+            {
+              "id": "motobloki-kentavr",
+              "name": "Мотоблоки Кентавр",
+              "url": "https://romb.ua/ru/motobloki/kentavr.html",
+              "children": []
+            },
+            {
+              "id": "motobloki-dtz",
+              "name": "Мотоблоки ДТЗ",
+              "url": "https://romb.ua/ru/motobloki/dtz.html",
+              "children": []
+            },
+            {
+              "id": "motobloki",
+              "name": "Мотоблоки",
+              "url": "https://romb.ua/ru/motobloki.html",
+              "children": [
+                {
+                  "id": "dizelnye-s-vodyanym-oxlazhdeniem",
+                  "name": "Дизельные с водяным охлаждением",
+                  "url": "https://romb.ua/ru/motobloki/zhidkostnoe-dizel_nyj_1.html",
+                  "children": []
+                },
+                {
+                  "id": "dizelnye-s-vozdushnym-oxlazhdeniem",
+                  "name": "Дизельные с воздушным охлаждением",
+                  "url": "https://romb.ua/ru/motobloki/vozdushnoe-dizel_nyj_1.html",
+                  "children": []
+                },
+                {
+                  "id": "benzinovye-s-vozduhnym-oxlazhdeniem",
+                  "name": "Бензиновые с воздушным охлаждением",
+                  "url": "https://romb.ua/ru/motobloki/vozdushno-benzinovyj_2.html",
+                  "children": [],
+                  "needs_manual_check": true
+                }
+              ]
+            },
+            {
+              "id": "kultivatory",
+              "name": "Культваторы",
+              "url": "https://romb.ua/ru/kultivatory.html",
+              "children": [
+                {
+                  "id": "motokultivatory",
+                  "name": "Мотокультиваторы",
+                  "url": "https://romb.ua/ru/kultivatory/benzinovyj_1.html",
+                  "children": []
+                },
+                {
+                  "id": "elektrokultivatory",
+                  "name": "Электрокультиваторы",
+                  "url": "https://romb.ua/ru/kultivatory/jelektrokul_tivator.html",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "naves-oborud-dlya-motoblokov",
+              "name": "Навесное оборудование для мотоблоков",
+              "url": "https://romb.ua/ru/naves-oborud-dlya-motoblokov.html",
+              "children": [
+                {
+                  "id": "okuchniki-dlya-motoblokov",
+                  "name": "Окучники для мотоблоков",
+                  "url": "https://romb.ua/ru/okuchniki-dlya-motoblokov.html",
+                  "children": []
+                },
+                {
+                  "id": "scepki-dlya-motoblokov",
+                  "name": "Сцепки для мотоблоков",
+                  "url": "https://romb.ua/ru/scepki-dlya-motoblokov.html",
+                  "children": []
+                },
+                {
+                  "id": "plugi-dlya-motoblokov",
+                  "name": "Плуги для мотоблоков",
+                  "url": "https://romb.ua/ru/plugi-dlya-motoblokov.html",
+                  "children": []
+                },
+                {
+                  "id": "kosilki-dlya-motoblokov",
+                  "name": "Косилки для мотоблоков",
+                  "url": "https://romb.ua/ru/kosilki-dlya-motoblokov.html",
+                  "children": []
+                },
+                {
+                  "id": "kartofelevykapyvateli-motoblokov",
+                  "name": "Картофелевыкопители для мотоблоков",
+                  "url": "https://romb.ua/ru/kartofelevykapyvateli-motobl.html",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mototexnika",
+          "name": "Транспорт",
+          "url": "https://romb.ua/ru/mototexnika.html",
+          "children": [
+            {
+              "id": "motocikly",
+              "name": "Мотоциклы",
+              "url": "https://romb.ua/ru/motocikly.html",
+              "children": [
+                {
+                  "id": "scrambler",
+                  "name": "Scrambler",
+                  "url": "https://romb.ua/ru/motocikly/scrambler.html",
+                  "children": []
+                },
+                {
+                  "id": "dorozhnyj",
+                  "name": "Дорожный",
+                  "url": "https://romb.ua/ru/motocikly/dorozhnyj.html",
+                  "children": []
+                },
+                {
+                  "id": "tur-enduro",
+                  "name": "Тур Эндуро",
+                  "url": "https://romb.ua/ru/motocikly/tur_jenduro.html",
+                  "children": []
+                },
+                {
+                  "id": "enduro",
+                  "name": "Эндуро",
+                  "url": "https://romb.ua/ru/motocikly/jenduro.html",
+                  "children": []
+                },
+                {
+                  "id": "sportbajk",
+                  "name": "Спортбайк",
+                  "url": "https://romb.ua/ru/motocikly/sportbajk.html",
+                  "children": []
+                },
+                {
+                  "id": "pitbajk",
+                  "name": "Питбайк",
+                  "url": "https://romb.ua/ru/motocikly/pitbajk.html",
+                  "children": []
+                },
+                {
+                  "id": "legkij-do-125-kub-sm",
+                  "name": "Легкий (до 125 куб. см)",
+                  "url": "https://romb.ua/ru/motocikly/legkij_do_125_kub_sm.html",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "skutery",
+              "name": "Скутеры",
+              "url": "https://romb.ua/ru/skutery.html",
+              "children": []
+            },
+            {
+              "id": "kvadrocikly",
+              "name": "Квадроциклы",
+              "url": "https://romb.ua/ru/kvadrocikly.html",
+              "children": []
+            },
+            {
+              "id": "elektrotransport",
+              "name": "Электротранспорт",
+              "url": "https://romb.ua/ru/elektrotransport.html",
+              "children": [
+                {
+                  "id": "elektrovelosipedy",
+                  "name": "Электровелосипеды",
+                  "url": "https://romb.ua/ru/mototexnika/elektrotransport/elektrovelosipedy.html",
+                  "children": []
+                },
+                {
+                  "id": "elektrosamokaty",
+                  "name": "Электросамокаты",
+                  "url": "https://romb.ua/ru/mototexnika/elektrotransport/elektrosamokaty.html",
+                  "children": []
+                },
+                {
+                  "id": "elektroskutery",
+                  "name": "Электроскутеры",
+                  "url": "https://romb.ua/ru/elektroskutery.html",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "oborudovanie",
+          "name": "Оборудование",
+          "url": "https://romb.ua/ru/oborudovanie.html",
+          "children": [
+            {
+              "id": "generatory",
+              "name": "Генераторы",
+              "url": "https://romb.ua/ru/generatory.html",
+              "children": []
+            },
+            {
+              "id": "gibridnye-invertory",
+              "name": "Гибридные инверторы",
+              "url": "https://romb.ua/ru/gibridnye-invertory.html",
+              "children": []
+            },
+            {
+              "id": "akkumulyatory-texniki",
+              "name": "Аккумуляторы и батареи для инверторов",
+              "url": "https://romb.ua/ru/akkumulyatory-texniki.html",
+              "children": []
+            },
+            {
+              "id": "kompressory",
+              "name": "Компрессоры",
+              "url": "https://romb.ua/ru/kompressory.html",
+              "children": []
+            },
+            {
+              "id": "dvigateli",
+              "name": "Двигатели",
+              "url": "https://romb.ua/ru/dvigateli.html",
+              "children": []
+            },
+            {
+              "id": "istochniki-besperebojnogo-pitanija",
+              "name": "Источники бесперебойного питания",
+              "url": "https://romb.ua/ru/istochniki-besperebojnogo-pitanija.html",
+              "children": []
+            },
+            {
+              "id": "avtomobil-nye-invertory",
+              "name": "Инверторы (преобразователи)",
+              "url": "https://romb.ua/ru/avtomobil-nye-invertory.html",
+              "children": []
+            },
+            {
+              "id": "stabilizatory-naprjazhenija",
+              "name": "Стабилизаторы напряжения",
+              "url": "https://romb.ua/ru/stabilizatory-naprjazhenija.html",
+              "children": []
+            },
+            {
+              "id": "pusko-zaryadnye-zaryadnye",
+              "name": "Пуско-зарядные и зарядные устройства",
+              "url": "https://romb.ua/ru/pusko-zaryadnye-zaryadnye.html",
+              "children": []
+            },
+            {
+              "id": "svarochnye-invertory-mma",
+              "name": "Сварочные инверторы MMA",
+              "url": "https://romb.ua/ru/svarochnye-invertory-mma.html",
+              "children": []
+            },
+            {
+              "id": "svarochnye-poluavtomaty-migmma",
+              "name": "Сварочные полуавтоматы MIG-MMA",
+              "url": "https://romb.ua/ru/svarochnye-poluavtomaty-migmma.html",
+              "children": []
+            },
+            {
+              "id": "betonomeshalki",
+              "name": "Бетономешалки",
+              "url": "https://romb.ua/ru/betonomeshalki.html",
+              "children": []
+            },
+            {
+              "id": "drovokoly",
+              "name": "Дровоколы",
+              "url": "https://romb.ua/ru/drovokoly.html",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "avtotovary",
+          "name": "Автотовары",
+          "url": "https://romb.ua/ru/avtotovary.html",
+          "children": [
+            {
+              "id": "avtojelektrika-i-jelektronika",
+              "name": "Автоэлектрика и электроника",
+              "url": "https://romb.ua/ru/avtojelektrika-i-jelektronika.html",
+              "children": [
+                {
+                  "id": "avtomobil-nye-invertory",
+                  "name": "Автомобильные инверторы",
+                  "url": "https://romb.ua/ru/avtomobil-nye-invertory.html",
+                  "children": [],
+                  "needs_manual_check": true
+                }
+              ],
+              "needs_manual_check": true
+            }
+          ],
+          "needs_manual_check": true
+        }
+      ],
+      "last_parsed": "2025-12-08T08:08:21.186988",
+      "notes": "",
+      "active": true
+    }
+  ]
+}

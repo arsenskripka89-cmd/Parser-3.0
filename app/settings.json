@@ -1,0 +1,205 @@
+{
+  "keys": [
+    {
+      "id": "5d951b24-7772-473a-851d-19b1ba11369b",
+      "name": "Арсен",
+      "key": "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",
+      "active": true,
+      "token_usage_history": [
+        {
+          "timestamp": "2025-12-07T11:59:10.352265",
+          "prompt_tokens": 11991,
+          "completion_tokens": 20,
+          "total_tokens": 12011
+        },
+        {
+          "timestamp": "2025-12-07T12:23:20.528511",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-07T12:28:47.852098",
+          "prompt_tokens": 11874,
+          "completion_tokens": 56,
+          "total_tokens": 11930
+        },
+        {
+          "timestamp": "2025-12-07T12:37:00.189016",
+          "prompt_tokens": 8603,
+          "completion_tokens": 119,
+          "total_tokens": 8722
+        },
+        {
+          "timestamp": "2025-12-07T12:37:15.236060",
+          "prompt_tokens": 12500,
+          "completion_tokens": 103,
+          "total_tokens": 12603
+        },
+        {
+          "timestamp": "2025-12-07T12:37:52.464483",
+          "prompt_tokens": 12500,
+          "completion_tokens": 103,
+          "total_tokens": 12603
+        },
+        {
+          "timestamp": "2025-12-07T12:50:08.951709",
+          "prompt_tokens": 12500,
+          "completion_tokens": 105,
+          "total_tokens": 12605
+        },
+        {
+          "timestamp": "2025-12-07T13:40:31.906227",
+          "prompt_tokens": 12514,
+          "completion_tokens": 107,
+          "total_tokens": 12621
+        },
+        {
+          "timestamp": "2025-12-07T13:40:48.075093",
+          "prompt_tokens": 12514,
+          "completion_tokens": 107,
+          "total_tokens": 12621
+        },
+        {
+          "timestamp": "2025-12-07T16:45:57.912795",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-07T16:46:03.373418",
+          "prompt_tokens": 11832,
+          "completion_tokens": 20,
+          "total_tokens": 11852
+        },
+        {
+          "timestamp": "2025-12-07T16:46:25.074558",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-07T16:46:28.076369",
+          "prompt_tokens": 11832,
+          "completion_tokens": 20,
+          "total_tokens": 11852
+        },
+        {
+          "timestamp": "2025-12-07T16:46:32.769794",
+          "prompt_tokens": 11991,
+          "completion_tokens": 20,
+          "total_tokens": 12011
+        },
+        {
+          "timestamp": "2025-12-07T16:46:36.589369",
+          "prompt_tokens": 11819,
+          "completion_tokens": 22,
+          "total_tokens": 11841
+        },
+        {
+          "timestamp": "2025-12-07T17:28:44.657149",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-07T17:28:48.445767",
+          "prompt_tokens": 11832,
+          "completion_tokens": 20,
+          "total_tokens": 11852
+        },
+        {
+          "timestamp": "2025-12-07T17:28:51.984585",
+          "prompt_tokens": 11991,
+          "completion_tokens": 20,
+          "total_tokens": 12011
+        },
+        {
+          "timestamp": "2025-12-07T17:28:55.476873",
+          "prompt_tokens": 11819,
+          "completion_tokens": 20,
+          "total_tokens": 11839
+        },
+        {
+          "timestamp": "2025-12-07T17:29:01.288634",
+          "prompt_tokens": 10418,
+          "completion_tokens": 98,
+          "total_tokens": 10516
+        },
+        {
+          "timestamp": "2025-12-07T17:29:11.154568",
+          "prompt_tokens": 10424,
+          "completion_tokens": 97,
+          "total_tokens": 10521
+        },
+        {
+          "timestamp": "2025-12-10T22:31:57.934294",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-10T22:32:01.538647",
+          "prompt_tokens": 11832,
+          "completion_tokens": 20,
+          "total_tokens": 11852
+        },
+        {
+          "timestamp": "2025-12-10T22:32:04.912512",
+          "prompt_tokens": 11991,
+          "completion_tokens": 20,
+          "total_tokens": 12011
+        },
+        {
+          "timestamp": "2025-12-10T22:32:07.910002",
+          "prompt_tokens": 11819,
+          "completion_tokens": 20,
+          "total_tokens": 11839
+        },
+        {
+          "timestamp": "2025-12-10T22:32:19.395565",
+          "prompt_tokens": 9723,
+          "completion_tokens": 20,
+          "total_tokens": 9743
+        },
+        {
+          "timestamp": "2025-12-10T22:38:24.516926",
+          "prompt_tokens": 11805,
+          "completion_tokens": 20,
+          "total_tokens": 11825
+        },
+        {
+          "timestamp": "2025-12-10T22:38:37.146007",
+          "prompt_tokens": 12500,
+          "completion_tokens": 103,
+          "total_tokens": 12603
+        },
+        {
+          "timestamp": "2025-12-10T22:38:57.309190",
+          "prompt_tokens": 12527,
+          "completion_tokens": 104,
+          "total_tokens": 12631
+        },
+        {
+          "timestamp": "2025-12-10T22:39:10.382939",
+          "prompt_tokens": 12686,
+          "completion_tokens": 104,
+          "total_tokens": 12790
+        },
+        {
+          "timestamp": "2025-12-10T22:39:23.787669",
+          "prompt_tokens": 12514,
+          "completion_tokens": 109,
+          "total_tokens": 12623
+        }
+      ]
+    }
+  ],
+  "current_key": "5d951b24-7772-473a-851d-19b1ba11369b"
+}
+
+
+
+
+
+

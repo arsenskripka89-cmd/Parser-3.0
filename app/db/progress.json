@@ -1,0 +1,443 @@
+{
+  "tasks": {
+    "ddbcbc6d-7876-4b89-9ee9-8d3321a401cf": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "87794e4b-526e-4c01-b263-de1fcfeb53b2": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "86722519-6010-4487-be50-bd93bdadda41": {
+      "type": "parse_categories",
+      "total": 1,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "a4078d45-6ea2-48df-859e-3e845996db39": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "4a6a1a6b-6548-43b9-9886-a71eabeda42c": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "13276704-d1f2-4521-8718-3331c1114b5f": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "91250c57-c7cf-42fe-a324-527dc8cd1063": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "98a5ddb7-cfe6-4587-83c1-2cece812d0b4": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "9328f042-c181-42a7-8f71-eddcd709e4ed": {
+      "type": "parse_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "7185dfb8-c7d7-4d07-a476-ee7c19266c33": {
+      "type": "parse_products",
+      "total": 4,
+      "done": 2,
+      "errors": [],
+      "status": "running"
+    },
+    "e3b4304c-b12d-46fa-a436-b398512ab359": {
+      "type": "parse_products",
+      "total": 4,
+      "done": 4,
+      "errors": [],
+      "status": "finished"
+    },
+    "b4a1070b-df0a-4c4c-bcbb-eeec6a058a48": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "19867308-d07d-4b3f-8215-3c79eaba53ba": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "14dbf993-4368-4bf0-bffa-a06eac786607": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "cd44513d-9386-4f39-8df7-c9cf9fe06ee7": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "bd48f441-eb2b-4271-b13a-09815d6592dc": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "c4ee3d8b-5278-4749-8574-86dd4234ad3d": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "ff1873a2-1113-4594-bd8c-ff30554084c0": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "1ae7b922-7346-4ba8-9dc1-48f98d1f09d1": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "6c4361d8-3be9-4e9b-9f71-c0e2879f86fc": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "17dfcffa-e163-4080-a534-6f62759c2f93": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "a7134cb0-84ca-4e83-a7d5-3d5422ceb8b4": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 2
+    },
+    "013f091e-35a0-4de7-9815-2adbbcb8ab20": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "5fac541e-7f5e-4639-a49b-55a3452f67fc": {
+      "type": "parse_products",
+      "total": 6,
+      "done": 6,
+      "errors": [],
+      "status": "finished"
+    },
+    "e0866ad3-76b9-4fd6-8aab-81e13bae49d5": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "d716dcb2-d9aa-4cdb-87d8-de1ccc828d42": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "00bac270-0c97-4e67-8421-bfe13ac37bf1": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 3
+    },
+    "a960999a-683f-4af4-aeed-e1136063dcc8": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "5aaaf617-690c-4ec6-a177-acc42a84bcf8": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 0
+    },
+    "25e30046-c0b8-4961-8ac4-592c37663688": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 5
+    },
+    "8567d837-da47-4b22-b386-3405a741f0ba": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "7e621266-e947-4bb8-ba63-1d3ef01ee1f5": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 3
+    },
+    "af12a148-f2f1-47a2-b3c5-dba8a5fb7992": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "94b4ace0-0523-4b90-8468-f999212477cd": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 17
+    },
+    "1300347d-6af1-4a74-82e0-d9c499fabf73": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "cdc8065f-0be6-4e6d-b019-40407b62a77c": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 30
+    },
+    "f65cf82e-12c6-43a0-8646-77a1329a3cab": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "b1a58fcf-e4cf-49ea-9fe4-5afa385fce59": {
+      "type": "parse_categories",
+      "total": 1,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "336739ed-04a5-4496-92cc-1bdea1338651": {
+      "type": "parse_categories",
+      "total": 1,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "d221af58-dd1b-4d7b-bdf5-e22a320f4529": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Помилка парсингу категорій: Request timed out.\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n        pool_request.request\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 103, in handle_request\n    return self._connection.handle_request(request)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 136, in handle_request\n    raise exc\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 106, in handle_request\n    ) = self._receive_response_headers(**kwargs)\n        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 177, in _receive_response_headers\n    event = self._receive_event(timeout=timeout)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 217, in _receive_event\n    data = self._network_stream.read(\n        self.READ_NUM_BYTES, timeout=timeout\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 126, in read\n    with map_exceptions(exc_map):\n         ~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 982, in request\n    response = self._client.send(\n        request,\n        stream=stream or self._should_stream_response_body(request=request),\n        **kwargs,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 914, in send\n    response = self._send_handling_auth(\n        request,\n    ...<2 lines>...\n        history=[],\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 942, in _send_handling_auth\n    response = self._send_handling_redirects(\n        request,\n        follow_redirects=follow_redirects,\n        history=history,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 979, in _send_handling_redirects\n    response = self._send_single_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 1014, in _send_single_request\n    response = transport.handle_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 864, in parse_competitor_categories\n    response = self.client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n    ...<5 lines>...\n        response_format={\"type\": \"json_object\"}\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1147, in create\n    return self._post(\n           ~~~~~~~~~~^\n        \"/chat/completions\",\n        ^^^^^^^^^^^^^^^^^^^^\n    ...<46 lines>...\n        stream_cls=Stream[ChatCompletionChunk],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1259, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1000, in request\n    raise APITimeoutError(request=request) from err\nopenai.APITimeoutError: Request timed out.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\parser.py\", line 770, in update_competitor_categories\n    new_categories = client.parse_competitor_categories(competitor_data[\"url\"])\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 935, in parse_competitor_categories\n    raise Exception(f\"Помилка парсингу категорій: {str(e)}\")\nException: Помилка парсингу категорій: Request timed out.\n"
+      ],
+      "status": "failed"
+    },
+    "2c836219-b131-43f1-ab3f-8c1157446972": {
+      "type": "discover_products",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished",
+      "products_found": 8
+    },
+    "4e2a957f-b2ac-4e52-89c9-3beb98974abb": {
+      "type": "parse_newly_discovered_products",
+      "total": 0,
+      "done": 0,
+      "errors": [],
+      "status": "finished"
+    },
+    "812e94fd-5a44-4cf3-a0ee-fe5f8b02e69e": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Помилка парсингу категорій: Request timed out.\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n        pool_request.request\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 103, in handle_request\n    return self._connection.handle_request(request)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 136, in handle_request\n    raise exc\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 106, in handle_request\n    ) = self._receive_response_headers(**kwargs)\n        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 177, in _receive_response_headers\n    event = self._receive_event(timeout=timeout)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 217, in _receive_event\n    data = self._network_stream.read(\n        self.READ_NUM_BYTES, timeout=timeout\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 126, in read\n    with map_exceptions(exc_map):\n         ~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 982, in request\n    response = self._client.send(\n        request,\n        stream=stream or self._should_stream_response_body(request=request),\n        **kwargs,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 914, in send\n    response = self._send_handling_auth(\n        request,\n    ...<2 lines>...\n        history=[],\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 942, in _send_handling_auth\n    response = self._send_handling_redirects(\n        request,\n        follow_redirects=follow_redirects,\n        history=history,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 979, in _send_handling_redirects\n    response = self._send_single_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 1014, in _send_single_request\n    response = transport.handle_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 864, in parse_competitor_categories\n    response = self.client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n    ...<5 lines>...\n        response_format={\"type\": \"json_object\"}\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1147, in create\n    return self._post(\n           ~~~~~~~~~~^\n        \"/chat/completions\",\n        ^^^^^^^^^^^^^^^^^^^^\n    ...<46 lines>...\n        stream_cls=Stream[ChatCompletionChunk],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1259, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1000, in request\n    raise APITimeoutError(request=request) from err\nopenai.APITimeoutError: Request timed out.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\parser.py\", line 770, in update_competitor_categories\n    new_categories = client.parse_competitor_categories(competitor_data[\"url\"])\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 935, in parse_competitor_categories\n    raise Exception(f\"Помилка парсингу категорій: {str(e)}\")\nException: Помилка парсингу категорій: Request timed out.\n"
+      ],
+      "status": "failed"
+    },
+    "01cb036d-e5dc-4830-b6a8-b7a96f888574": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Помилка парсингу категорій: Request timed out.\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n        pool_request.request\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 103, in handle_request\n    return self._connection.handle_request(request)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 136, in handle_request\n    raise exc\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 106, in handle_request\n    ) = self._receive_response_headers(**kwargs)\n        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 177, in _receive_response_headers\n    event = self._receive_event(timeout=timeout)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 217, in _receive_event\n    data = self._network_stream.read(\n        self.READ_NUM_BYTES, timeout=timeout\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 126, in read\n    with map_exceptions(exc_map):\n         ~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 982, in request\n    response = self._client.send(\n        request,\n        stream=stream or self._should_stream_response_body(request=request),\n        **kwargs,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 914, in send\n    response = self._send_handling_auth(\n        request,\n    ...<2 lines>...\n        history=[],\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 942, in _send_handling_auth\n    response = self._send_handling_redirects(\n        request,\n        follow_redirects=follow_redirects,\n        history=history,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 979, in _send_handling_redirects\n    response = self._send_single_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 1014, in _send_single_request\n    response = transport.handle_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 867, in parse_competitor_categories\n    response = self.client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n    ...<5 lines>...\n        response_format={\"type\": \"json_object\"}\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1147, in create\n    return self._post(\n           ~~~~~~~~~~^\n        \"/chat/completions\",\n        ^^^^^^^^^^^^^^^^^^^^\n    ...<46 lines>...\n        stream_cls=Stream[ChatCompletionChunk],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1259, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1000, in request\n    raise APITimeoutError(request=request) from err\nopenai.APITimeoutError: Request timed out.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\parser.py\", line 770, in update_competitor_categories\n    new_categories = client.parse_competitor_categories(competitor_data[\"url\"])\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 938, in parse_competitor_categories\n    raise Exception(f\"Помилка парсингу категорій: {str(e)}\")\nException: Помилка парсингу категорій: Request timed out.\n"
+      ],
+      "status": "failed"
+    },
+    "7acaa44c-b48c-43b1-93be-bb7a5446ab63": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Помилка парсингу категорій: Request timed out.\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 250, in handle_request\n    resp = self._pool.handle_request(req)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 256, in handle_request\n    raise exc from None\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection_pool.py\", line 236, in handle_request\n    response = connection.handle_request(\n        pool_request.request\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\connection.py\", line 103, in handle_request\n    return self._connection.handle_request(request)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 136, in handle_request\n    raise exc\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 106, in handle_request\n    ) = self._receive_response_headers(**kwargs)\n        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 177, in _receive_response_headers\n    event = self._receive_event(timeout=timeout)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_sync\\http11.py\", line 217, in _receive_event\n    data = self._network_stream.read(\n        self.READ_NUM_BYTES, timeout=timeout\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_backends\\sync.py\", line 126, in read\n    with map_exceptions(exc_map):\n         ~~~~~~~~~~~~~~^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpcore\\_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 982, in request\n    response = self._client.send(\n        request,\n        stream=stream or self._should_stream_response_body(request=request),\n        **kwargs,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 914, in send\n    response = self._send_handling_auth(\n        request,\n    ...<2 lines>...\n        history=[],\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 942, in _send_handling_auth\n    response = self._send_handling_redirects(\n        request,\n        follow_redirects=follow_redirects,\n        history=history,\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 979, in _send_handling_redirects\n    response = self._send_single_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_client.py\", line 1014, in _send_single_request\n    response = transport.handle_request(request)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 249, in handle_request\n    with map_httpcore_exceptions():\n         ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\httpx\\_transports\\default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.ReadTimeout: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 867, in parse_competitor_categories\n    response = self.client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n    ...<5 lines>...\n        response_format={\"type\": \"json_object\"}\n    )\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1147, in create\n    return self._post(\n           ~~~~~~~~~~^\n        \"/chat/completions\",\n        ^^^^^^^^^^^^^^^^^^^^\n    ...<46 lines>...\n        stream_cls=Stream[ChatCompletionChunk],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1259, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HP\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\openai\\_base_client.py\", line 1000, in request\n    raise APITimeoutError(request=request) from err\nopenai.APITimeoutError: Request timed out.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\parser.py\", line 770, in update_competitor_categories\n    new_categories = client.parse_competitor_categories(competitor_data[\"url\"])\n  File \"C:\\Users\\HP\\Documents\\Parser_3.0\\app\\gpt_client.py\", line 938, in parse_competitor_categories\n    raise Exception(f\"Помилка парсингу категорій: {str(e)}\")\nException: Помилка парсингу категорій: Request timed out.\n"
+      ],
+      "status": "failed"
+    },
+    "3103c11e-0175-4fb9-b553-439b7289cbaf": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Оновлення завершено:\n✓ Знайдено: 33 категорій\n✗ Не знайдено (потрібна перевірка): 2 категорій\n➕ Додано нових: 35 категорій\n\nНезнайдені категорії (позначені для ручної перевірки):\n- Сівалки (ID: seyalki)\n- Ступиці (ID: stupitsy)"
+      ],
+      "status": "finished"
+    },
+    "fd0317af-ca89-4a90-a211-d3b6fb9cca3b": {
+      "type": "parse_categories",
+      "total": 1,
+      "done": 0,
+      "errors": [],
+      "status": "running"
+    },
+    "821c8fed-efbc-4e16-880a-81b936ced1b6": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Парсинг завершено:\n➕ Додано: 4 категорій"
+      ],
+      "status": "finished"
+    },
+    "66ffbc74-6d37-4311-9b5b-3ffe459e083e": {
+      "type": "update_categories",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Оновлення завершено:\n✓ Знайдено: 39 категорій\n✗ Не знайдено (потрібна перевірка): 4 категорій\n➕ Додано нових: 0 категорій\n\nНезнайдені категорії (позначені для ручної перевірки):\n- Бензиновые с воздушным охлаждением (ID: benzinovye-s-vozduhnym-oxlazhdeniem)\n- Автомобильные инверторы (ID: avtomobil-nye-invertory)\n- Автоэлектрика и электроника (ID: avtojelektrika-i-jelektronika)\n- Автотовары (ID: avtotovary)"
+      ],
+      "status": "finished"
+    },
+    "9a61c064-3f6d-4861-ac32-36a4ffff3395": {
+      "type": "parse_selected",
+      "total": 4,
+      "done": 4,
+      "errors": [],
+      "status": "finished"
+    },
+    "d60701a3-f001-41af-95bf-9444fb491fde": {
+      "type": "parse_selected",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "6fa3d014-96d9-4d7a-bd00-548d72386458": {
+      "type": "parse_product",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "c7dff17f-0af6-44dc-90eb-b539052da617": {
+      "type": "parse_selected",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Товар 9c86a7c7-ca72-4552-8078-690a677b25fc: Помилка після 3 спроб: Помилка HTTP 404 при отриманні сторінки https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-1/: Client error '404 Not Found' for url 'https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-1/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+      ],
+      "status": "failed"
+    },
+    "7bf21789-c362-4ef0-9b47-47c80c80e848": {
+      "type": "parse_product",
+      "total": 1,
+      "done": 1,
+      "errors": [
+        "Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-1/"
+      ],
+      "status": "failed"
+    },
+    "dc7e94b3-82bf-454f-91fa-7118d9489375": {
+      "type": "parse_selected",
+      "total": 4,
+      "done": 4,
+      "errors": [
+        "Товар 0b633a92-95a1-44df-b800-b929ff9f4703: Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-2/",
+        "Товар 3f332dbd-439d-4418-afad-982d4ef0dd46: Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-3/",
+        "Товар b2d36ed9-a448-42e2-ab38-ad035547db60: Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-4/",
+        "Товар d01a977d-0bb9-4313-9434-a78b33a8f476: Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-5/"
+      ],
+      "status": "failed"
+    },
+    "38a1800f-d570-4018-87dc-f5c410188da8": {
+      "type": "parse_selected",
+      "total": 1,
+      "done": 1,
+      "errors": [],
+      "status": "finished"
+    },
+    "ba023218-3aa2-40eb-825d-be336f520f6e": {
+      "type": "parse_selected",
+      "total": 4,
+      "done": 4,
+      "errors": [],
+      "status": "finished"
+    }
+  }
+}

@@ -23,8 +23,64 @@ class GPTClient:
         self.client = OpenAI(api_key=api_key, timeout=120.0)  # Збільшено до 120 секунд
         self.max_retries = 3
 
+    def _fetch_page_content_with_ai(self, url: str, timeout: float = 60.0) -> Optional[str]:
+        """Отримує HTML через вбудований AI браузер (GPT сам переходить на сайт)."""
+        try:
+            logger.info(f"Спроба отримати сторінку через AI браузер: {url}")
+            stream = self.client.responses.create(
+                model="gpt-4o-mini",
+                stream=True,
+                tools=[{"type": "browser"}],
+                input=[{
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": (
+                                "Перейди на вказаний URL, завантаж HTML та поверни сирий HTML без інтерпретації. "
+                                "URL: " + url
+                            )
+                        }
+                    ]
+                }],
+                max_output_tokens=9000,
+                temperature=0,
+            )
+
+            collected_chunks: list[str] = []
+            start_time = time.time()
+
+            for event in stream:
+                # Захист від зависання стріму
+                if time.time() - start_time > timeout:
+                    raise TimeoutError(f"Перевищено ліміт {timeout}s для AI браузера")
+
+                # Витягуємо текстову відповідь моделі
+                if getattr(event, "type", "") == "response.output_text.delta":
+                    chunk = getattr(event, "delta", "")
+                    if chunk:
+                        collected_chunks.append(chunk)
+                elif getattr(event, "type", "") == "response.error":
+                    error_message = getattr(event, "error", None)
+                    raise Exception(f"AI browser error: {error_message}")
+
+            ai_content = "".join(collected_chunks).strip()
+            if ai_content:
+                logger.info(f"AI браузер повернув {len(ai_content)} символів HTML")
+                return ai_content
+            logger.warning("AI браузер не повернув контент")
+            return None
+        except Exception as e:
+            logger.warning(f"Не вдалося отримати сторінку через AI браузер: {e}")
+            return None
+
     def _fetch_page_content(self, url: str, timeout: float = 30.0, max_retries: int = 3) -> str:
         """Отримує контент сторінки через HTTP запит з retry логікою"""
+        # Спочатку намагаємося дати ШІ самостійно перейти на сторінку
+        ai_content = self._fetch_page_content_with_ai(url, timeout=timeout * 2)
+        if ai_content:
+            return ai_content
+
         # Базові "браузерні" заголовки: деякі магазини віддають 415/406/403 без Accept/Accept-Language.
         base_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -1012,21 +1068,35 @@ HTML контент:
             # Обробляємо категорії: конвертуємо відносні URL в абсолютні та генеруємо ID
             from urllib.parse import urljoin, urlparse
             import hashlib
-            
+
+            base_domain = urlparse(url).netloc.replace("www.", "")
+
             def process_category(cat, base_url):
-                """Обробляє категорію: конвертує URL та генерує ID"""
+                """Обробляє категорію: конвертує URL, генерує ID та відфільтровує зайві домени"""
                 # Конвертуємо відносний URL в абсолютний
                 if cat.get("url") and cat["url"] and cat["url"].strip() != "":
                     url_str = str(cat["url"]).strip()
                     if not url_str.startswith("http"):
                         # Якщо URL починається з "/", додаємо базовий домен
                         if url_str.startswith("/"):
-                            from urllib.parse import urlparse
                             parsed_base = urlparse(base_url)
                             cat["url"] = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
                         else:
                             cat["url"] = urljoin(base_url, url_str)
-                
+
+                # Якщо після конвертації URL відсутній або веде на інший домен – відкидаємо
+                parsed_url = urlparse(cat.get("url", ""))
+                if not parsed_url.scheme or not parsed_url.netloc:
+                    logger.info("Пропущено категорію без валідного URL")
+                    return None
+
+                cat_domain = parsed_url.netloc.replace("www.", "")
+                if cat_domain and cat_domain != base_domain:
+                    logger.info(
+                        f"Пропущено категорію з іншим доменом: {cat.get('name')} ({cat.get('url')})"
+                    )
+                    return None
+
                 # Генеруємо ID на основі URL або назви, якщо його немає або він не валідний
                 if not cat.get("id") or cat["id"] == "":
                     # Створюємо ID на основі URL або назви
@@ -1039,15 +1109,44 @@ HTML контент:
                         # Якщо немає URL, використовуємо назву
                         name_slug = cat.get("name", "").lower().replace(" ", "-").replace("/", "-")
                         cat["id"] = hashlib.md5(name_slug.encode()).hexdigest()[:12]
-                
+
+                # Нормалізуємо назву
+                if cat.get("name"):
+                    cat["name"] = str(cat["name"]).strip()
+
                 # Обробляємо дочірні категорії рекурсивно
                 if cat.get("children") and isinstance(cat["children"], list):
-                    cat["children"] = [process_category(child, base_url) for child in cat["children"]]
-                
+                    processed_children = []
+                    seen_urls = set()
+                    for child in cat["children"]:
+                        processed_child = process_category(child, base_url)
+                        if not processed_child:
+                            continue
+                        child_url = processed_child.get("url")
+                        if child_url and child_url not in seen_urls:
+                            processed_children.append(processed_child)
+                            seen_urls.add(child_url)
+                    cat["children"] = processed_children
+                else:
+                    cat["children"] = []
+
                 return cat
-            
+
+            def dedupe_categories(category_list):
+                """Видаляє дублікати категорій на одному рівні за URL"""
+                deduped = []
+                seen = set()
+                for c in category_list:
+                    if not c:
+                        continue
+                    url_val = c.get("url")
+                    if url_val and url_val not in seen:
+                        deduped.append(c)
+                        seen.add(url_val)
+                return deduped
+
             # Обробляємо всі категорії
-            processed_categories = [process_category(cat, url) for cat in categories]
+            processed_categories = dedupe_categories([process_category(cat, url) for cat in categories])
             
             # Додаємо інформацію про токени
             usage = response.usage

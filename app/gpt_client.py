@@ -25,9 +25,29 @@ class GPTClient:
 
     def _fetch_page_content(self, url: str, timeout: float = 30.0, max_retries: int = 3) -> str:
         """Отримує контент сторінки через HTTP запит з retry логікою"""
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        # Базові "браузерні" заголовки: деякі магазини віддають 415/406/403 без Accept/Accept-Language.
+        base_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Upgrade-Insecure-Requests": "1",
         }
+
+        def build_fallback_urls(original_url: str) -> list:
+            """Повертає альтернативні URL, які часто виправляють 301/415 для 'канонічних' сторінок."""
+            if not original_url:
+                return []
+            candidates: list = []
+            u = str(original_url).strip()
+            if not u:
+                return []
+            # Частий кейс для OpenCart/самописних магазинів: URL без '/' редіректиться на URL з '/'.
+            if not u.endswith("/"):
+                candidates.append(u.rstrip("/") + "/")
+            # Прибираємо дубль
+            return [c for c in candidates if c and c != original_url]
         
         last_error = None
         for attempt in range(max_retries):
@@ -36,7 +56,7 @@ class GPTClient:
                 current_timeout = timeout * (1 + attempt * 0.5)  # 30s, 45s, 60s для 3 спроб
                 logger.info(f"Спроба {attempt + 1}/{max_retries} отримання сторінки {url} (таймаут: {current_timeout}s)")
                 
-                with httpx.Client(timeout=current_timeout, headers=headers) as client:
+                with httpx.Client(timeout=current_timeout, headers=base_headers) as client:
                     response = client.get(url, follow_redirects=True)
                     response.raise_for_status()
                     content = response.text
@@ -55,6 +75,29 @@ class GPTClient:
                 # Спеціальна обробка для 404 - товар більше не існує
                 if e.response.status_code == 404:
                     raise ProductNotFoundError(f"Товар не знайдено на сайті (404): {url}")
+                # Деякі магазини (напр. kentavr.ua) можуть віддати 415 для неканонічного URL.
+                if e.response.status_code == 415:
+                    try:
+                        fallback_urls = build_fallback_urls(url)
+                        if fallback_urls:
+                            logger.warning(
+                                f"HTTP 415 для {url}. Пробуємо альтернативні URL: {fallback_urls}"
+                            )
+                        for fallback_url in fallback_urls:
+                            try:
+                                with httpx.Client(timeout=current_timeout, headers=base_headers) as client:
+                                    resp2 = client.get(fallback_url, follow_redirects=True)
+                                    resp2.raise_for_status()
+                                    content2 = resp2.text
+                                    logger.info(
+                                        f"Успішно отримано HTML після fallback URL: {fallback_url} ({len(content2)} символів)"
+                                    )
+                                    return content2
+                            except Exception as inner:
+                                last_error = inner
+                                continue
+                    except Exception as inner_outer:
+                        last_error = inner_outer
                 raise Exception(f"Помилка HTTP {e.response.status_code} при отриманні сторінки {url}: {str(e)}")
             except httpx.RequestError as e:
                 last_error = e

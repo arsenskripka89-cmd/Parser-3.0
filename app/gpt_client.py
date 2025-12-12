@@ -1068,21 +1068,35 @@ HTML контент:
             # Обробляємо категорії: конвертуємо відносні URL в абсолютні та генеруємо ID
             from urllib.parse import urljoin, urlparse
             import hashlib
-            
+
+            base_domain = urlparse(url).netloc.replace("www.", "")
+
             def process_category(cat, base_url):
-                """Обробляє категорію: конвертує URL та генерує ID"""
+                """Обробляє категорію: конвертує URL, генерує ID та відфільтровує зайві домени"""
                 # Конвертуємо відносний URL в абсолютний
                 if cat.get("url") and cat["url"] and cat["url"].strip() != "":
                     url_str = str(cat["url"]).strip()
                     if not url_str.startswith("http"):
                         # Якщо URL починається з "/", додаємо базовий домен
                         if url_str.startswith("/"):
-                            from urllib.parse import urlparse
                             parsed_base = urlparse(base_url)
                             cat["url"] = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
                         else:
                             cat["url"] = urljoin(base_url, url_str)
-                
+
+                # Якщо після конвертації URL відсутній або веде на інший домен – відкидаємо
+                parsed_url = urlparse(cat.get("url", ""))
+                if not parsed_url.scheme or not parsed_url.netloc:
+                    logger.info("Пропущено категорію без валідного URL")
+                    return None
+
+                cat_domain = parsed_url.netloc.replace("www.", "")
+                if cat_domain and cat_domain != base_domain:
+                    logger.info(
+                        f"Пропущено категорію з іншим доменом: {cat.get('name')} ({cat.get('url')})"
+                    )
+                    return None
+
                 # Генеруємо ID на основі URL або назви, якщо його немає або він не валідний
                 if not cat.get("id") or cat["id"] == "":
                     # Створюємо ID на основі URL або назви
@@ -1095,15 +1109,44 @@ HTML контент:
                         # Якщо немає URL, використовуємо назву
                         name_slug = cat.get("name", "").lower().replace(" ", "-").replace("/", "-")
                         cat["id"] = hashlib.md5(name_slug.encode()).hexdigest()[:12]
-                
+
+                # Нормалізуємо назву
+                if cat.get("name"):
+                    cat["name"] = str(cat["name"]).strip()
+
                 # Обробляємо дочірні категорії рекурсивно
                 if cat.get("children") and isinstance(cat["children"], list):
-                    cat["children"] = [process_category(child, base_url) for child in cat["children"]]
-                
+                    processed_children = []
+                    seen_urls = set()
+                    for child in cat["children"]:
+                        processed_child = process_category(child, base_url)
+                        if not processed_child:
+                            continue
+                        child_url = processed_child.get("url")
+                        if child_url and child_url not in seen_urls:
+                            processed_children.append(processed_child)
+                            seen_urls.add(child_url)
+                    cat["children"] = processed_children
+                else:
+                    cat["children"] = []
+
                 return cat
-            
+
+            def dedupe_categories(category_list):
+                """Видаляє дублікати категорій на одному рівні за URL"""
+                deduped = []
+                seen = set()
+                for c in category_list:
+                    if not c:
+                        continue
+                    url_val = c.get("url")
+                    if url_val and url_val not in seen:
+                        deduped.append(c)
+                        seen.add(url_val)
+                return deduped
+
             # Обробляємо всі категорії
-            processed_categories = [process_category(cat, url) for cat in categories]
+            processed_categories = dedupe_categories([process_category(cat, url) for cat in categories])
             
             # Додаємо інформацію про токени
             usage = response.usage

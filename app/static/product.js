@@ -670,7 +670,7 @@ async function parseNow() {
     }
 }
 
-// Парсинг всіх даних (повний парсинг) - залишаємо синхронним, бо це окрема операція
+// Парсинг всіх даних (повний парсинг) - запускаємо як фонову задачу (через tasks.js)
 async function parseFull() {
     const productId = getProductId();
     if (!productId) return;
@@ -678,32 +678,19 @@ async function parseFull() {
     const btn = document.getElementById('parseFullBtn');
     const originalText = btn.textContent;
     btn.disabled = true;
-    btn.textContent = 'Парсинг всіх даних...';
+    btn.textContent = 'Запуск...';
     
     try {
-        const response = await fetch(`/products/parse_full/${productId}`, {
-            method: 'POST'
-        });
-        
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ detail: 'Помилка сервера' }));
-            throw new Error(errorData.detail || `Помилка ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            showToast('✅ Всі дані товару успішно спарсено!', 'success');
-            // Перезавантажуємо дані товару
-            await loadProduct();
-        } else {
-            throw new Error('Помилка парсингу');
-        }
+        await createParseProductFullTask(productId);
+        btn.textContent = 'В процесі…';
     } catch (error) {
-        showToast('Помилка парсингу всіх даних: ' + error.message, 'error');
+        showToast('Помилка запуску парсингу всіх даних: ' + error.message, 'error');
     } finally {
-        btn.disabled = false;
-        btn.textContent = originalText;
+        // Кнопку відновлює tasks.js після завершення задачі (restoreButtons)
+        if (btn.textContent !== 'В процесі…') {
+            btn.disabled = false;
+            btn.textContent = originalText;
+        }
     }
 }
 

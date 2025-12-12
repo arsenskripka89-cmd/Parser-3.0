@@ -1214,9 +1214,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Запуск...';
+            }
+
             const formData = new FormData(form);
             const productData = {
-                name: formData.get('name'),
                 url: formData.get('url')
             };
             
@@ -1232,15 +1238,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const data = await response.json();
                 
                 if (data.success) {
-                    alert('Товар успішно додано!');
+                    showToast('✅ Товар додано. Запускаю парсинг всіх даних…', 'success');
                     form.reset();
                     if (addProductModal) addProductModal.style.display = 'none';
-                    applyFilters(); // Перезавантажуємо з поточними фільтрами
+                    
+                    // Оновлюємо список, щоб одразу з’явився новий товар
+                    applyFilters();
+                    
+                    // Запускаємо повний парсинг (той самий, що "Парсинг всіх даних" у картці товару)
+                    const productId = data.product && data.product.id;
+                    if (productId) {
+                        await createParseProductFullTask(productId);
+                    }
                 } else {
-                    alert('Помилка додавання товару');
+                    showToast('❌ Помилка додавання товару', 'error');
                 }
             } catch (error) {
-                alert('Помилка: ' + error.message);
+                showToast('❌ Помилка: ' + error.message, 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
             }
         });
     }

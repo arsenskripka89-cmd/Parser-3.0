@@ -576,6 +576,30 @@ async def parse_single_product(task_id: str, product_id: str):
         await update_task_progress(task_id, done=1, total=1, status="failed", error=str(e))
 
 
+async def parse_single_product_full(task_id: str, product_id: str):
+    """Асинхронна функція для повного парсингу одного товару у фоновому режимі"""
+    try:
+        await update_task_progress(task_id, done=0, total=1, status="running", error=None)
+        
+        db = await load_db()
+        product_data = None
+        for p in db["products"]:
+            if p["id"] == product_id:
+                product_data = p
+                break
+        
+        if not product_data:
+            raise Exception("Товар не знайдено")
+        
+        product = Product(**product_data)
+        parsed_data = await parse_product_full(product)
+        await save_result(product_id, parsed_data)
+        
+        await update_task_progress(task_id, done=1, total=1, status="finished")
+    except Exception as e:
+        await update_task_progress(task_id, done=1, total=1, status="failed", error=str(e))
+
+
 async def parse_filtered_products(task_id: str, filters: Dict):
     """Асинхронна функція для парсингу відфільтрованих товарів у фоновому режимі"""
     try:

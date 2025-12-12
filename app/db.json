@@ -1,0 +1,1665 @@
+{
+  "products": [
+    {
+      "id": "a351f2ed-9700-4848-8fca-3d007d4fd6f3",
+      "name": "Мотоблок Кентавр МБ1012Д (мотоблок + фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1012d",
+      "status": "parsed",
+      "name_parsed": "Мотоблок Кентавр МБ1012Д (мотоблок + фреза)",
+      "sku": "123106",
+      "price": 45071.0,
+      "availability": "в наявності",
+      "history": [
+        {
+          "date": "2025-12-07T12:50:08.955368",
+          "price": 45018.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T16:45:57.923303",
+          "price": 45018.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T16:46:25.085044",
+          "price": 45018.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T17:28:44.663838",
+          "price": 45018.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:31:57.940365",
+          "price": 45071.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:38:24.521388",
+          "price": 45071.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:38:37.151849",
+          "price": 45071.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T10:19:17.499581",
+      "last_parsed_at": "2025-12-10T22:38:37.151820",
+      "logs": [
+        {
+          "date": "2025-12-07T12:23:20.535370",
+          "operation": "parse",
+          "status": "success",
+          "message": "Товар успішно спарсено. Ціна: 45018.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-07T12:28:47.858471",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1012Д (мотоблок + фреза), SKU: 123106, Ціна: 45018.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-07T12:37:00.192645",
+          "operation": "regenerate_rules",
+          "status": "success",
+          "message": "Правила парсингу успішно регенеровано"
+        },
+        {
+          "date": "2025-12-07T12:37:15.240415",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1012Д (мотоблок + фреза), SKU: 123106, Ціна: 45018.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-07T12:37:52.468713",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1012Д (мотоблок + фреза), SKU: 123106, Ціна: 45018.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-07T12:50:08.972618",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1012Д (мотоблок + фреза), SKU: 123106, Ціна: 45018.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-10T22:38:37.171576",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1012Д (мотоблок + фреза), SKU: 123106, Ціна: 45071.0, Наявність: в наявності"
+        }
+      ],
+      "parsing_rules": {
+        "name": {
+          "selector": ".product-title h1",
+          "attribute": "text"
+        },
+        "sku": {
+          "selector": ".product-sku",
+          "attribute": "text"
+        },
+        "price": {
+          "selector": ".product-price .price",
+          "attribute": "text"
+        },
+        "availability": {
+          "selector": ".product-availability",
+          "attribute": "text"
+        },
+        "category_path": {
+          "selector": ".breadcrumb a",
+          "attribute": "text"
+        }
+      },
+      "competitor_name": "Кентавр",
+      "category_path": [
+        "Головна",
+        "Мотоблоки",
+        "Дизельні мотоблоки"
+      ],
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90"
+    },
+    {
+      "id": "4c98ad22-a767-466b-9c1f-133f0306ecc5",
+      "name": "Мотоблок Кентавр МБ 1080Д (мотоблок + фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1080d",
+      "status": "parsed",
+      "name_parsed": "Мотоблок Кентавр МБ 1080Д (мотоблок + фреза)",
+      "sku": "116805",
+      "price": 39559.0,
+      "availability": "в наявності",
+      "history": [
+        {
+          "date": "2025-12-07T16:46:03.382713",
+          "price": 39513.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T16:46:28.084561",
+          "price": 39513.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T17:28:48.470212",
+          "price": 39513.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:32:01.546329",
+          "price": 39559.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:38:57.315530",
+          "price": 39559.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T10:20:22.485141",
+      "last_parsed_at": "2025-12-10T22:38:57.315514",
+      "competitor_name": "Кентавр",
+      "category_path": [
+        "Головна",
+        "Мотоблоки",
+        "Дизельні мотоблоки"
+      ],
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "logs": [
+        {
+          "date": "2025-12-10T22:38:57.332647",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ 1080Д (мотоблок + фреза), SKU: 116805, Ціна: 39559.0, Наявність: в наявності"
+        }
+      ]
+    },
+    {
+      "id": "52d5e218-27ec-4a49-956d-c00780fb4573",
+      "name": "Мотоблок Кентавр МБ1080ДЕ (мотоблок+фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1080dye",
+      "status": "parsed",
+      "name_parsed": "Мотоблок Кентавр МБ1080ДЕ (мотоблок+фреза)",
+      "sku": "117227",
+      "price": 50965.0,
+      "availability": "в наявності",
+      "history": [
+        {
+          "date": "2025-12-07T11:59:10.356919",
+          "price": 50905.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T16:46:32.773657",
+          "price": 50905.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T17:28:51.996879",
+          "price": 50905.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:32:04.920003",
+          "price": 50965.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:39:10.389038",
+          "price": 50965.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T10:22:09.243510",
+      "last_parsed_at": "2025-12-10T22:39:10.389025",
+      "competitor_name": "Кентавр",
+      "category_path": [
+        "Головна",
+        "Мотоблоки",
+        "Дизельні мотоблоки"
+      ],
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "logs": [
+        {
+          "date": "2025-12-10T22:39:10.407124",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ1080ДЕ (мотоблок+фреза), SKU: 117227, Ціна: 50965.0, Наявність: в наявності"
+        }
+      ]
+    },
+    {
+      "id": "f2e12e32-dceb-434e-a630-708eb9dc1005",
+      "name": "Мотоблок Кентавр МБ40-2-4Д (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/mtblk-mb40-2-4d-400-8",
+      "status": "parsed",
+      "name_parsed": "Мотоблок Кентавр МБ40-2-4Д (колеса 4.00-8)",
+      "sku": "217883",
+      "price": 18614.0,
+      "availability": "в наявності",
+      "history": [
+        {
+          "date": "2025-12-07T13:40:48.077995",
+          "price": 18592.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T16:46:36.594287",
+          "price": 18592.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-07T17:28:55.481313",
+          "price": 18592.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:32:07.917669",
+          "price": 18614.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:39:23.793510",
+          "price": 18614.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T13:40:23.467955",
+      "last_parsed_at": "2025-12-10T22:39:23.793493",
+      "logs": [
+        {
+          "date": "2025-12-07T13:40:31.912165",
+          "operation": "parse",
+          "status": "success",
+          "message": "Товар успішно спарсено. Ціна: 18592.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-07T13:40:48.095631",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ40-2-4Д (колеса 4.00-8), SKU: 217883, Ціна: 18592.0, Наявність: в наявності"
+        },
+        {
+          "date": "2025-12-10T22:39:23.811859",
+          "operation": "parse_full",
+          "status": "success",
+          "message": "Всі дані товару успішно спарсено. Назва: Мотоблок Кентавр МБ40-2-4Д (колеса 4.00-8), SKU: 217883, Ціна: 18614.0, Наявність: в наявності"
+        }
+      ],
+      "competitor_name": "Кентавр",
+      "category_path": [
+        "Головна",
+        "Мотоблоки",
+        "Дизельні мотоблоки"
+      ],
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90"
+    },
+    {
+      "id": "19db195c-5f37-4a20-9589-4be3ab4d5e00",
+      "name": "Дровокол електричний Кентавр ДК 15370м",
+      "url": "https://kentavr.ua/uhod-za-sadom/drovokoly/drvk-el-kentavr-dk-15370m",
+      "status": "parsed",
+      "name_parsed": "Дровокол електричний Кентавр ДК 15370м",
+      "sku": "192664",
+      "price": 11782.0,
+      "availability": "в наявності",
+      "competitor_name": "Офіційний інтернет-магазин компанії Kentavr™",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Головна",
+        "Догляд за садом",
+        "Дровоколи"
+      ],
+      "from_category_discovery": true,
+      "history": [
+        {
+          "date": "2025-12-07T17:29:01.296663",
+          "price": 11782.0,
+          "availability": "в наявності"
+        },
+        {
+          "date": "2025-12-10T22:32:19.401247",
+          "price": 11782.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T17:27:30.415826",
+      "last_parsed_at": "2025-12-10T22:32:19.401232"
+    },
+    {
+      "id": "77370a9e-2143-4262-86ce-2bba91cbf9d3",
+      "name": "Дровокол електричний Кентавр ДК 15520мк",
+      "url": "https://kentavr.ua/uhod-za-sadom/drovokoly/drvkl-el-kentavr-dk-15520mk",
+      "status": "parsed",
+      "name_parsed": "Дровокол електричний Кентавр ДК 15520мк",
+      "sku": "192665",
+      "price": 17114.0,
+      "availability": "в наявності",
+      "competitor_name": "Офіційний інтернет-магазин компанії Kentavr™",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Головна",
+        "Догляд за садом",
+        "Дровоколи"
+      ],
+      "from_category_discovery": true,
+      "history": [
+        {
+          "date": "2025-12-07T17:29:11.162091",
+          "price": 17114.0,
+          "availability": "в наявності"
+        }
+      ],
+      "created_at": "2025-12-07T17:27:30.416545",
+      "last_parsed_at": "2025-12-07T17:29:11.162066"
+    },
+    {
+      "id": "00edd66d-0aa2-4456-883b-18e44cec0fb9",
+      "name": "Бензопила ланцюгова Кентавр Профи БП-5233ТНм",
+      "url": "https://kentavr.ua/uhod-za-sadom/benzopily-sad/bnzpl-ts-prf-bp-5233tnm",
+      "status": "pending",
+      "name_parsed": "Бензопила ланцюгова Кентавр Профи БП-5233ТНм",
+      "sku": null,
+      "price": 2956,
+      "availability": null,
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Бензопили садові"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:02:24.661276",
+      "last_parsed_at": null
+    },
+    {
+      "id": "65f70ac9-7271-4f7c-b0b8-61c03527953f",
+      "name": "Бензопила ланцюгова Кентавр БП-4521ТН",
+      "url": "https://kentavr.ua/uhod-za-sadom/benzopily-sad/benzopila-tsepnaya-bp-4521tn",
+      "status": "pending",
+      "name_parsed": "Бензопила ланцюгова Кентавр БП-4521ТН",
+      "sku": null,
+      "price": 2526,
+      "availability": null,
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Бензопили садові"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:02:24.661637",
+      "last_parsed_at": null
+    },
+    {
+      "id": "5d0694d6-2c10-4006-a81a-d7cf7ed5d068",
+      "name": "Бензопила ланцюгова Кентавр БП-5225ТН",
+      "url": "https://kentavr.ua/uhod-za-sadom/benzopily-sad/benzopila-tsepnaya-bp-5225tn",
+      "status": "pending",
+      "name_parsed": "Бензопила ланцюгова Кентавр БП-5225ТН",
+      "sku": null,
+      "price": 2580,
+      "availability": null,
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Бензопили садові"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:02:24.661893",
+      "last_parsed_at": null
+    },
+    {
+      "id": "9c86a7c7-ca72-4552-8078-690a677b25fc",
+      "name": "Мотоблок Кентавр МБ-1",
+      "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-1/",
+      "status": "disabled_by_competitor",
+      "name_parsed": "Мотоблок Кентавр МБ-1",
+      "sku": "MB-1",
+      "price": 9999.0,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:03:52.027790",
+      "last_parsed_at": "2025-12-10T22:58:54.447404",
+      "logs": [
+        {
+          "date": "2025-12-10T22:48:58.225201",
+          "operation": "parse_full",
+          "status": "error",
+          "message": "Помилка після 3 спроб: Товар не знайдено на сайті (404): https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-1/"
+        },
+        {
+          "date": "2025-12-10T22:58:54.447404",
+          "operation": "parse",
+          "status": "error",
+          "message": "Товар вимкнений конкурентом (404 - товар не знайдено на сайті)"
+        }
+      ]
+    },
+    {
+      "id": "0b633a92-95a1-44df-b800-b929ff9f4703",
+      "name": "Мотоблок Кентавр МБ-2",
+      "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-2/",
+      "status": "disabled_by_competitor",
+      "name_parsed": "Мотоблок Кентавр МБ-2",
+      "sku": "MB-2",
+      "price": 10999.0,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:03:52.028048",
+      "last_parsed_at": "2025-12-10T22:58:55.327997",
+      "logs": [
+        {
+          "date": "2025-12-10T22:58:55.327997",
+          "operation": "parse",
+          "status": "error",
+          "message": "Товар вимкнений конкурентом (404 - товар не знайдено на сайті)"
+        }
+      ]
+    },
+    {
+      "id": "3f332dbd-439d-4418-afad-982d4ef0dd46",
+      "name": "Мотоблок Кентавр МБ-3",
+      "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-3/",
+      "status": "disabled_by_competitor",
+      "name_parsed": "Мотоблок Кентавр МБ-3",
+      "sku": "MB-3",
+      "price": 11999.0,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:03:52.028267",
+      "last_parsed_at": "2025-12-10T22:58:37.965054",
+      "logs": [
+        {
+          "date": "2025-12-10T22:58:37.965054",
+          "operation": "parse",
+          "status": "error",
+          "message": "Товар вимкнений конкурентом (404 - товар не знайдено на сайті)"
+        }
+      ]
+    },
+    {
+      "id": "b2d36ed9-a448-42e2-ab38-ad035547db60",
+      "name": "Мотоблок Кентавр МБ-4",
+      "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-4/",
+      "status": "disabled_by_competitor",
+      "name_parsed": "Мотоблок Кентавр МБ-4",
+      "sku": "MB-4",
+      "price": 12999.0,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:03:52.028444",
+      "last_parsed_at": "2025-12-10T22:58:56.247277",
+      "logs": [
+        {
+          "date": "2025-12-10T22:58:56.247277",
+          "operation": "parse",
+          "status": "error",
+          "message": "Товар вимкнений конкурентом (404 - товар не знайдено на сайті)"
+        }
+      ]
+    },
+    {
+      "id": "d01a977d-0bb9-4313-9434-a78b33a8f476",
+      "name": "Мотоблок Кентавр МБ-5",
+      "url": "https://kentavr.ua/motobloki/motobloki-s-vozdushnym-ohlazhdeniyem/motoblok-kentavr-mb-5/",
+      "status": "disabled_by_competitor",
+      "name_parsed": "Мотоблок Кентавр МБ-5",
+      "sku": "MB-5",
+      "price": 13999.0,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:03:52.028605",
+      "last_parsed_at": "2025-12-10T22:58:57.137148",
+      "logs": [
+        {
+          "date": "2025-12-10T22:58:57.137148",
+          "operation": "parse",
+          "status": "error",
+          "message": "Товар вимкнений конкурентом (404 - товар не знайдено на сайті)"
+        }
+      ]
+    },
+    {
+      "id": "7a789989-16bc-431e-a6ca-65c84d758b89",
+      "name": "Мотоблок Кентавр МБ1010Д (мотоблок + фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1010d",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ1010Д (мотоблок + фреза)",
+      "sku": null,
+      "price": 43536,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з водяним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:13:09.103919",
+      "last_parsed_at": null
+    },
+    {
+      "id": "027c28a2-138a-4704-bdc8-f0a459dd46e5",
+      "name": "Мотоблок Кентавр МБ1010ДЕ (мотоблок + фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1010dye",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ1010ДЕ (мотоблок + фреза)",
+      "sku": null,
+      "price": 54250,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з водяним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:13:09.104200",
+      "last_parsed_at": null
+    },
+    {
+      "id": "aa7c4e19-0efe-42cd-82c3-496a424cdedb",
+      "name": "Мотоблок Кентавр МБ1012ДЕ (мотоблок + фреза)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb1012dye",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ1012ДЕ (мотоблок + фреза)",
+      "sku": null,
+      "price": 53996,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з водяним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:13:09.104641",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f1f48c23-eae8-446e-9bad-6d17236eb57d",
+      "name": "Мотоблок Кентавр МБ40-1С",
+      "url": "https://kentavr.ua/motobloki/motoblok-mb40-1s",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ40-1С",
+      "sku": null,
+      "price": 22869,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.722883",
+      "last_parsed_at": null
+    },
+    {
+      "id": "22f11bb0-b54b-49e2-ac68-847001f0de50",
+      "name": "Мотоблок Кентавр МБ2050Д/М2 (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2050dm2-8",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2050Д/М2 (колеса 4.00-8)",
+      "sku": null,
+      "price": 20836,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.723340",
+      "last_parsed_at": null
+    },
+    {
+      "id": "65ec5f09-0155-4b51-b234-16edd3d2a087",
+      "name": "Мотоблок Кентавр МБ40-1С/G (колеса 13х5.00-6)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/mtb-kntvr-mb40-1sg-13h500-6",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ40-1С/G (колеса 13х5.00-6)",
+      "sku": null,
+      "price": 28163,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.723566",
+      "last_parsed_at": null
+    },
+    {
+      "id": "681fb7ae-cc32-45ed-aacc-d308e42c07fc",
+      "name": "Мотоблок Кентавр МБ 40-1С/G-2F (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/mtb-kntvr-mb-40-1sg-2f-48",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ 40-1С/G-2F (колеса 4.00-8)",
+      "sku": null,
+      "price": 32017,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.723754",
+      "last_parsed_at": null
+    },
+    {
+      "id": "8204332e-8243-414f-b543-a41888d0c2ca",
+      "name": "Мотоблок Кентавр МБ2060Д (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2060d-400-8",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2060Д (колеса 4.00-8)",
+      "sku": null,
+      "price": 23123,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.724000",
+      "last_parsed_at": null
+    },
+    {
+      "id": "b960ef74-6395-4aa2-a4d1-6665e72e2932",
+      "name": "Мотоблок Кентавр МБ2060Д (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2060d-400-10",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2060Д (колеса 4.00-10)",
+      "sku": null,
+      "price": 23631,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.724255",
+      "last_parsed_at": null
+    },
+    {
+      "id": "3324983f-7b62-433e-9ccc-079afbd1bcfa",
+      "name": "Мотоблок Кентавр МБ40-3",
+      "url": "https://kentavr.ua/motobloki/motoblok-mb40-3",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ40-3",
+      "sku": null,
+      "price": 13086,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.724789",
+      "last_parsed_at": null
+    },
+    {
+      "id": "79a71b4e-5d08-4f44-ad7f-1bc7f20b679c",
+      "name": "Мотоблок Кентавр МБ2061Д (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2061d-4-10-1",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2061Д (колеса 4.00-10)",
+      "sku": null,
+      "price": 28883,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.725248",
+      "last_parsed_at": null
+    },
+    {
+      "id": "1a1aca44-2623-4ea1-8cfb-f3e69130a818",
+      "name": "Мотоблок Кентавр МБ40-2",
+      "url": "https://kentavr.ua/motobloki/motoblok-mb40-2",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ40-2",
+      "sku": null,
+      "price": 16517,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.725567",
+      "last_parsed_at": null
+    },
+    {
+      "id": "77e2a34f-10d5-45cf-a40e-6ef3923f0f64",
+      "name": "Мотоблок Кентавр МБ2010Д (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2010d-400-10",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2010Д (колеса 4.00-10)",
+      "sku": null,
+      "price": 25114,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.725784",
+      "last_parsed_at": null
+    },
+    {
+      "id": "00761661-0ce5-495d-8af5-c35d84309c8c",
+      "name": "Мотоблок Кентавр МБ2070Б/М2 (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/motoblok-mb2070bm2-400-8-1",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2070Б/М2 (колеса 4.00-8)",
+      "sku": null,
+      "price": 16559,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.726017",
+      "last_parsed_at": null
+    },
+    {
+      "id": "4d3bd01b-9e3a-4b5b-b7e0-993bf6fb00a9",
+      "name": "Мотоблок Кентавр МБ2010ДЕ (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2010de400-101",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2010ДЕ (колеса 4.00-10)",
+      "sku": null,
+      "price": 31424,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.726240",
+      "last_parsed_at": null
+    },
+    {
+      "id": "9896ca1f-e912-4a25-9c0f-ea0e770aeaaf",
+      "name": "Мотоблок Кентавр МБ2070Б (колеса 4.00-8)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/motoblok-mb2070b-8",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2070Б (колеса 4.00-8)",
+      "sku": null,
+      "price": 17575,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.726458",
+      "last_parsed_at": null
+    },
+    {
+      "id": "cd63a8c9-494c-4ce4-9b9e-07243f49af99",
+      "name": "Мотоблок Кентавр МБ2012Д (колеса 5.00-12)",
+      "url": "https://kentavr.ua/motobloki/dizelnyye-motobloki/motoblok-mb2012d-500-12",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2012Д (колеса 5.00-12)",
+      "sku": null,
+      "price": 26130,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.726676",
+      "last_parsed_at": null
+    },
+    {
+      "id": "b5fcc795-7cba-41ee-9d10-f9915a63c360",
+      "name": "Мотоблок Кентавр МБ2070Б (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/motoblok-mb2070b-4-10",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2070Б (колеса 4.00-10)",
+      "sku": null,
+      "price": 18592,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.726888",
+      "last_parsed_at": null
+    },
+    {
+      "id": "dc55580a-0726-4686-9e3b-fe9c58ce1f84",
+      "name": "Мотоблок Кентавр МБ2013Б (колеса 4.00-10)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/motoblok-mb2013b-400-10",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ2013Б (колеса 4.00-10)",
+      "sku": null,
+      "price": 23631,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.727088",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f0a57dd4-8adf-4eed-af5a-93a9b4d88b34",
+      "name": "Мотоблок Кентавр МБ 2017Б (колеса 5.00-12)",
+      "url": "https://kentavr.ua/motobloki/benzinovyye-motobloki/motoblok-mb-2017b",
+      "status": "pending",
+      "name_parsed": "Мотоблок Кентавр МБ 2017Б (колеса 5.00-12)",
+      "sku": null,
+      "price": 24605,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотоблоки з повітряним охолодженням"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T18:14:45.727261",
+      "last_parsed_at": null
+    },
+    {
+      "id": "6c899f18-b6a8-4699-827f-bad9a62b61e9",
+      "name": "Трактор KENTAVR 244М",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244m",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244М",
+      "sku": null,
+      "price": 215985,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.644496",
+      "last_parsed_at": null
+    },
+    {
+      "id": "4d47f17e-af4b-41d3-bf45-0d17c103f10f",
+      "name": "Трактор KENTAVR H 504BCCU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-h-504bccu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR H 504BCCU",
+      "sku": null,
+      "price": 745360,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.645116",
+      "last_parsed_at": null
+    },
+    {
+      "id": "ba55c4c0-81d2-496d-a535-44514b28faae",
+      "name": "Трактор KENTAVR H 504ССU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-h-504ccu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR H 504ССU",
+      "sku": null,
+      "price": 546315,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.645373",
+      "last_parsed_at": null
+    },
+    {
+      "id": "060afe3f-6b23-4254-ad8c-551558b5ebc8",
+      "name": "Трактор KENTAVR H 504U",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-h-504u",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR H 504U",
+      "sku": null,
+      "price": 425618,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.645706",
+      "last_parsed_at": null
+    },
+    {
+      "id": "d1aa7d0f-d549-4b03-b958-8249725d4f76",
+      "name": "Трактор KENTAVR S 504Uе",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-s-504ue",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR S 504Uе",
+      "sku": null,
+      "price": 389620,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.645889",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f0103742-ac72-4415-a8a6-96be4ec7dee9",
+      "name": "Трактор KENTAVR S 504CU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-s-504cu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR S 504CU",
+      "sku": null,
+      "price": 444675,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.648824",
+      "last_parsed_at": null
+    },
+    {
+      "id": "38e818b2-6651-424f-96f5-87685bdb3379",
+      "name": "Трактор KENTAVR S 504CСUе",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-s-504csue",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR S 504CСUе",
+      "sku": null,
+      "price": 494420,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.649492",
+      "last_parsed_at": null
+    },
+    {
+      "id": "749d485d-8b2b-4134-aa20-71cfce73dc14",
+      "name": "Трактор KENTAVR 404X",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-404x",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 404X",
+      "sku": null,
+      "price": 330330,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.650284",
+      "last_parsed_at": null
+    },
+    {
+      "id": "2aba1440-6690-4b9b-bd4c-c18c08856a0b",
+      "name": "Трактор KENTAVR 404CCXU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-404ccxu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 404CCXU",
+      "sku": null,
+      "price": 453145,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.650663",
+      "last_parsed_at": null
+    },
+    {
+      "id": "e26e1b66-2bd4-473a-837f-073e86fc51a7",
+      "name": "Трактор KENTAVR 404XU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-404xu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 404XU",
+      "sku": null,
+      "price": 347270,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.650889",
+      "last_parsed_at": null
+    },
+    {
+      "id": "55871370-ff1a-4867-a717-4d47ae795929",
+      "name": "Трактор KENTAVR 504UE",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-504ue",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 504UE",
+      "sku": null,
+      "price": 389620,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651043",
+      "last_parsed_at": null
+    },
+    {
+      "id": "d8b6ab61-47be-4a68-ac21-e224cd610af7",
+      "name": "Трактор KENTAVR S 404XU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-s-404xu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR S 404XU",
+      "sku": null,
+      "price": 338800,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651177",
+      "last_parsed_at": null
+    },
+    {
+      "id": "d318c5e3-6ce0-4d46-8ebd-841b31fce9e2",
+      "name": "Трактор KENTAVR 10D",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-10d",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 10D",
+      "sku": null,
+      "price": 70725,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651330",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f7c1c153-6664-4aac-8661-ec5631e536da",
+      "name": "Трактор KENTAVR 10D/1350",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-10d1350",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 10D/1350",
+      "sku": null,
+      "price": 71783,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651499",
+      "last_parsed_at": null
+    },
+    {
+      "id": "335bf1ca-5712-4d26-b7f8-02bb196efa88",
+      "name": "Трактор KENTAVR 15G",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-15g",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 15G",
+      "sku": null,
+      "price": 67760,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651659",
+      "last_parsed_at": null
+    },
+    {
+      "id": "e7c6a7d7-6ade-41ee-9218-226783bc09cb",
+      "name": "Трактор KENTAVR 15G/1350",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-15g1350",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 15G/1350",
+      "sku": null,
+      "price": 67548,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.651825",
+      "last_parsed_at": null
+    },
+    {
+      "id": "c8bd97f9-a7db-4950-a758-da09ad372ad9",
+      "name": "Трактор KENTAVR 160B",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-160b",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 160B",
+      "sku": null,
+      "price": 80465,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.652003",
+      "last_parsed_at": null
+    },
+    {
+      "id": "06cd4f89-6cc0-4208-a334-bfb85a9cab37",
+      "name": "Трактор KENTAVR 160BN",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-160bn",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 160BN",
+      "sku": null,
+      "price": 94017,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.652297",
+      "last_parsed_at": null
+    },
+    {
+      "id": "65fe28c1-5693-451b-93e6-c3cd1e317df8",
+      "name": "Трактор KENTAVR 200B",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-200b",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 200B",
+      "sku": null,
+      "price": 101640,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.652987",
+      "last_parsed_at": null
+    },
+    {
+      "id": "b265e4d6-f7d5-4369-9c1a-9480ff4c3035",
+      "name": "Трактор KENTAVR 240B",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-240b",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 240B",
+      "sku": null,
+      "price": 103546,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.653760",
+      "last_parsed_at": null
+    },
+    {
+      "id": "6e4c7478-e37f-450c-ab26-027c034543c7",
+      "name": "Трактор KENTAVR 240BP",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-240bp",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 240BP",
+      "sku": null,
+      "price": 116463,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.654280",
+      "last_parsed_at": null
+    },
+    {
+      "id": "d36d2dc2-04b3-4ce6-a8a3-f47829bcf251",
+      "name": "Трактор KENTAVR 244BР/10",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244br10",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244BР/10",
+      "sku": null,
+      "price": 150343,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.654525",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f3bcf294-72f5-4025-a99d-40bbd91e4e43",
+      "name": "Трактор KENTAVR 240BP/10",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-240bp10",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 240BP/10",
+      "sku": null,
+      "price": 116463,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.654731",
+      "last_parsed_at": null
+    },
+    {
+      "id": "ca5d6c90-62fc-4875-b991-ff958bd67b68",
+      "name": "Трактор KENTAVR 350BP",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-350bp",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 350BP",
+      "sku": null,
+      "price": 120698,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.654885",
+      "last_parsed_at": null
+    },
+    {
+      "id": "c3f86219-658d-46f6-93cc-cb00647586ba",
+      "name": "Трактор KENTAVR 350BP/10",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-350bp10",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 350BP/10",
+      "sku": null,
+      "price": 120698,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.655143",
+      "last_parsed_at": null
+    },
+    {
+      "id": "e5d6e738-836d-4659-a7ba-c8c861f4d1be",
+      "name": "Трактор KENTAVR F244XU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-f244xu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR F244XU",
+      "sku": null,
+      "price": 275275,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.655395",
+      "last_parsed_at": null
+    },
+    {
+      "id": "8fa90d69-cd3e-4614-b93f-15fbd3d46a05",
+      "name": "Трактор KENTAVR 244S",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244s",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244S",
+      "sku": null,
+      "price": 237160,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.655624",
+      "last_parsed_at": null
+    },
+    {
+      "id": "d6c66ddc-24b6-4ab3-8948-7410d44e48fb",
+      "name": "Трактор KENTAVR 244SX",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244sx",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244SX",
+      "sku": null,
+      "price": 241395,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.655954",
+      "last_parsed_at": null
+    },
+    {
+      "id": "5821e799-3c80-4e60-8d32-3108cf370a4e",
+      "name": "Трактор KENTAVR 244SXU",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244sxu",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244SXU",
+      "sku": null,
+      "price": 249865,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.656276",
+      "last_parsed_at": null
+    },
+    {
+      "id": "234eece4-15cb-4795-b1e3-780b926b842f",
+      "name": "Трактор KENTAVR 244SXC",
+      "url": "https://kentavr.ua/traktory/traktor-kentavr-244sxc",
+      "status": "pending",
+      "name_parsed": "Трактор KENTAVR 244SXC",
+      "sku": null,
+      "price": 311273,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Трактори"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T19:10:02.656430",
+      "last_parsed_at": null
+    },
+    {
+      "id": "bc007d7c-b9f1-4d21-a0cd-c18263cee278",
+      "name": "Мотопомпа бензинова Кентавр ВБМ-2552",
+      "url": "https://kentavr.ua/motopompy/motopompa-vbm-2552",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр ВБМ-2552",
+      "sku": null,
+      "price": 4569,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660045",
+      "last_parsed_at": null
+    },
+    {
+      "id": "c9e38155-8e4f-44f7-be77-4a5dcfeae92d",
+      "name": "Мотопомпа бензинова Кентавр ВБМ-4052",
+      "url": "https://kentavr.ua/motopompy/motopompa-vbm-4052",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр ВБМ-4052",
+      "sku": null,
+      "price": 4158,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660269",
+      "last_parsed_at": null
+    },
+    {
+      "id": "b04a1778-e3a8-4d0a-9e09-1de9824df7fb",
+      "name": "Мотопомпа бензинова Кентавр ЛБМ50",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-lbm50",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр ЛБМ50",
+      "sku": null,
+      "price": 5698,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660436",
+      "last_parsed_at": null
+    },
+    {
+      "id": "7c28673c-fdd4-4dfe-a69c-1f45452d667b",
+      "name": "Мотопомпа бензинова Кентавр ЛБМ80",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-lbm80",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр ЛБМ80",
+      "sku": null,
+      "price": 6235,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660547",
+      "last_parsed_at": null
+    },
+    {
+      "id": "f5cd610e-9037-4176-b744-0e528fd2daeb",
+      "name": "Мотопомпа бензинова Кентавр КБМ100ПК",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-kbm100pk",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр КБМ100ПК",
+      "sku": null,
+      "price": 14781,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660672",
+      "last_parsed_at": null
+    },
+    {
+      "id": "3a72eb5d-744a-42ec-8125-587c53113673",
+      "name": "Мотопомпа бензинова Кентавр КБМ80ВН",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-kbm80vn",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр КБМ80ВН",
+      "sku": null,
+      "price": 8600,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.660837",
+      "last_parsed_at": null
+    },
+    {
+      "id": "bc25bf89-3bd0-4a60-a5d3-1822396a08ab",
+      "name": "Мотопомпа бензинова Кентавр КБМ100ВН",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-kbm100vn",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр КБМ100ВН",
+      "sku": null,
+      "price": 10481,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.661037",
+      "last_parsed_at": null
+    },
+    {
+      "id": "4d25b1dc-894b-414f-9743-b75685e6ad2a",
+      "name": "Мотопомпа бензинова Кентавр КБМ80ГКР",
+      "url": "https://kentavr.ua/motopompy/motopompa-benzinovaya-kbm80gkr",
+      "status": "pending",
+      "name_parsed": "Мотопомпа бензинова Кентавр КБМ80ГКР",
+      "sku": null,
+      "price": 12900,
+      "availability": "в наявності",
+      "competitor_name": "Кентавр",
+      "competitor_id": "3d5cb30e-331c-450e-86d9-8229afcc2d90",
+      "category_path": [
+        "Мотопомпи"
+      ],
+      "from_category_discovery": true,
+      "history": [],
+      "created_at": "2025-12-07T22:25:27.661236",
+      "last_parsed_at": null
+    }
+  ]
+}
+
+
+
+
+
+

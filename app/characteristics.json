@@ -1,0 +1,107 @@
+{
+  "groups": [
+    {
+      "id": "ca81a01d-dca1-408d-a559-9d75add4e824",
+      "name": "Характеристика двигуна",
+      "description": "",
+      "category_path": [
+        "3d5cb30e-331c-450e-86d9-8229afcc2d90:Двигуни",
+        "3d5cb30e-331c-450e-86d9-8229afcc2d90:Мотоблоки",
+        "3d5cb30e-331c-450e-86d9-8229afcc2d90:Мотоблоки > Дизельні мотоблоки"
+      ],
+      "created_at": "2025-12-09T20:24:35.149850",
+      "updated_at": "2025-12-10T21:37:00.333215",
+      "priority": 1
+    },
+    {
+      "id": "a13e249e-62a5-4047-9e74-86a46cd432cd",
+      "name": "Характеристика двигунів",
+      "description": "",
+      "category_path": [
+        "3d5cb30e-331c-450e-86d9-8229afcc2d90:Двигуни"
+      ],
+      "created_at": "2025-12-09T20:52:01.227656",
+      "updated_at": "2025-12-09T20:52:01.227706"
+    }
+  ],
+  "characteristics": [
+    {
+      "id": "51cad587-6c1f-4843-9f8d-f63b32685cb3",
+      "name": "Об'єм",
+      "type": "number",
+      "priority": 1,
+      "unit": "см3",
+      "category_path": [],
+      "group_id": "ca81a01d-dca1-408d-a559-9d75add4e824",
+      "photo_url": null,
+      "created_at": "2025-12-09T20:26:05.374918",
+      "updated_at": "2025-12-10T21:48:29.112275",
+      "choices": [
+        "400см"
+      ]
+    },
+    {
+      "id": "0c191168-1104-433e-a38e-029d2f0339b0",
+      "name": "Потужність",
+      "type": "variation",
+      "priority": 2,
+      "unit": null,
+      "category_path": [],
+      "group_id": "ca81a01d-dca1-408d-a559-9d75add4e824",
+      "photo_url": null,
+      "created_at": "2025-12-09T20:52:38.641167",
+      "updated_at": "2025-12-10T21:53:35.585778",
+      "choices": [
+        "223",
+        "333"
+      ]
+    },
+    {
+      "id": "f9c5d0df-b285-4f58-92c2-73dfdea7cf68",
+      "name": "Виробник",
+      "type": "text",
+      "priority": 3,
+      "unit": null,
+      "category_path": [],
+      "group_id": null,
+      "photo_url": null,
+      "created_at": "2025-12-11T07:47:28.667137",
+      "updated_at": "2025-12-11T07:47:28.667180"
+    }
+  ],
+  "product_characteristics": {
+    "a351f2ed-9700-4848-8fca-3d007d4fd6f3": [
+      {
+        "characteristic_id": "0c191168-1104-433e-a38e-029d2f0339b0",
+        "value": null,
+        "photo_url": null
+      },
+      {
+        "characteristic_id": "51cad587-6c1f-4843-9f8d-f63b32685cb3",
+        "value": null,
+        "photo_url": null
+      }
+    ],
+    "4c98ad22-a767-466b-9c1f-133f0306ecc5": [
+      {
+        "characteristic_id": "0c191168-1104-433e-a38e-029d2f0339b0",
+        "value": null,
+        "photo_url": null
+      }
+    ],
+    "52d5e218-27ec-4a49-956d-c00780fb4573": [
+      {
+        "characteristic_id": "51cad587-6c1f-4843-9f8d-f63b32685cb3",
+        "value": "400",
+        "photo_url": null
+      }
+    ],
+    "9c86a7c7-ca72-4552-8078-690a677b25fc": [
+      {
+        "characteristic_id": "51cad587-6c1f-4843-9f8d-f63b32685cb3",
+        "value": null,
+        "photo_url": null
+      }
+    ]
+  }
+}

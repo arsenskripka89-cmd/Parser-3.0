@@ -1,0 +1,131 @@
+/* Додаткові стилі для модальних вікон та утиліт */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 32px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #1e1e1e;
+}
+
+/* Додаткові утиліти для таблиць */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Плавні переходи для всіх інтерактивних елементів */
+* {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Блокування UI під час парсингу */
+.parsing-active button[editable],
+.parsing-active input,
+.parsing-active select,
+.parsing-active textarea {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.parsing-active button:not([disabled]):not([href]) {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Посилання та кнопки-посилання НЕ блокуємо - користувач може переглядати сторінки */
+.parsing-active a {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
+
+/* Анімація spinner для глобального індикатора */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Стилі для searchable select характеристик */
+.char-searchable-select-container {
+    position: relative;
+}
+
+.char-searchable-input {
+    cursor: pointer;
+}
+
+.char-dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.char-dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.char-dropdown-option:hover {
+    background-color: #eff6ff;
+}
+
+.char-dropdown-option.bg-blue-100 {
+    background-color: #dbeafe;
+}
+
+.char-dropdown-icon {
+    pointer-events: none;
+}

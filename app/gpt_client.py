@@ -248,7 +248,7 @@ class GPTClient:
                 important_parts.append(f"<!-- PRODUCT LINKS ({len(product_links)} total) -->\n" + "\n".join(product_links[:500]))
             
             # 4. JSON-LD структуровані дані (можуть містити товари) - ВАЖЛИВО!
-            json_ld_scripts = soup.find_all('script', type=re.compile('application/ld\+json', re.I))
+            json_ld_scripts = soup.find_all('script', type=re.compile(r'application/ld\+json', re.I))
             for script in json_ld_scripts[:10]:  # Збільшуємо до 10
                 script_text = script.string
                 if script_text:
@@ -1090,15 +1090,32 @@ HTML контент:
             except:
                 return "Категорія"
 
-    def parse_category_products(self, category_url: str) -> list:
-        """Парсить список товарів з категорії через GPT"""
+    def parse_category_products(self, category_url: str) -> Dict:
+        """Парсить список товарів з категорії через GPT.
+
+        Повертає:
+        {
+          "products": [...],    # тільки сторінки товарів
+          "categories": [...]   # (опційно) посилання на підкатегорії, якщо вони трапляються в HTML
+        }
+        """
         try:
             content = self._fetch_page_content(category_url)
             # Використовуємо спеціальну оптимізацію для товарів (зберігаємо важливі частини)
             optimized_content = self._optimize_html_for_products(content)
             
             system_prompt = """Ти експерт з парсингу товарів з інтернет-магазинів.
-Проаналізуй HTML контент сторінки категорії та витягни список ВСІХ товарів на цій сторінці.
+Проаналізуй HTML контент сторінки категорії та витягни список ВСІХ ТОВАРІВ на цій сторінці.
+
+КРИТИЧНО: НЕ ПЛУТАЙ ТОВАРИ З КАТЕГОРІЯМИ.
+- Якщо посилання веде на сторінку КАТЕГОРІЇ/СПИСКУ/ФІЛЬТРА/ПАГІНАЦІЇ — НЕ додавати в products.
+- Такі посилання додай у categories (як “кандидати категорій”), якщо вони виглядають як підкатегорії в межах каталогу.
+- В products мають бути ТІЛЬКИ сторінки КОНКРЕТНИХ товарів.
+
+Як відрізнити товар від категорії (евристики):
+- Товар зазвичай має ознаки: ціна/кнопка купівлі/артикул/JSON-LD @type=Product/og:type=product.
+- Категорія зазвичай містить сітку багатьох товарів, фільтри, сортування, пагінацію, “показати ще”.
+- Посилання з меню/хлібних крихт/навігації/фільтрів/“page=” — це НЕ товар.
 
 КРИТИЧНО ВАЖЛИВО - ТИ ПОВИНЕН ЗНАЙТИ ВСІ ТОВАРИ БЕЗ ВИНЯТКУ!
 
@@ -1149,7 +1166,7 @@ HTML контент:
 - Перевір навіть другорядні блоки та каруселі
 - ОСОБЛИВО УВАЖНО перевір JSON-LD дані - там може бути повний список товарів
 
-Для кожного товару витягни:
+Для кожного товару (products) витягни:
 1. Назва товару (name) - ОБОВ'ЯЗКОВО! Повна назва товару зі сторінки
 2. URL товару (url) - ОБОВ'ЯЗКОВО! Повний абсолютний URL посилання на товар
    * Якщо URL відносний (починається з "/"), додай базовий домен
@@ -1171,7 +1188,11 @@ HTML контент:
 
 ПОМНИ: КРАЩЕ ЗНАЙТИ БАГАТО ТОВАРІВ (навіть з повтореннями), НІЖ ПРОПУСТИТИ ЇХ!
 
-Поверни результат у форматі JSON об'єкта з полем "products" (масив), де кожен товар має:
+Поверни результат у форматі JSON об'єкта з полями:
+- products: масив ТІЛЬКИ товарів
+- categories: масив (опційно) кандидатів категорій/підкатегорій (НЕ товари)
+
+Формат:
 {
   "products": [
     {
@@ -1180,6 +1201,12 @@ HTML контент:
       "sku": "123456" або null,
       "price": 999.99 або null,
       "availability": "в наявності" | "немає в наявності" | "під замовлення" або null
+    }
+  ],
+  "categories": [
+    {
+      "name": "Назва категорії",
+      "url": "https://example.com/category/xyz"
     }
   ]
 }"""
@@ -1194,14 +1221,17 @@ HTML контент:
 - JSON-LD структуровані дані
 - Всі елементи з класами типу "product-*", "item-*", "goods-*"
 
-ВАЖЛИВО: Знайди ВСІ товари на сторінці, не пропускай жодного. Перевір кожен елемент та кожне посилання.
+ВАЖЛИВО:
+- У products повертай ТІЛЬКИ товари (сторінки конкретних товарів).
+- Будь-які посилання на категорії/підкатегорії/фільтри/пагінацію НЕ включай у products — додай їх у categories.
+- Якщо сумніваєшся між товаром і категорією — вважай це категорією (categories), а не товаром.
 
 URL категорії: {category_url}
 
 HTML контент:
 {optimized_content}
 
-Поверни список товарів у форматі JSON об'єкта з полем "products" (масив ВСІХ товарів)."""
+Поверни результат у форматі JSON об'єкта з полями "products" та (опційно) "categories"."""
 
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
@@ -1223,12 +1253,25 @@ HTML контент:
                 logger.error(f"Повна відповідь GPT: {result_text}")
                 raise Exception(f"Помилка парсингу JSON від GPT: {str(e)}")
             
-            # Очікуємо, що GPT поверне об'єкт з полем "products"
-            if "products" in result:
-                products = result["products"]
-                if not isinstance(products, list):
-                    logger.warning(f"GPT повернув products не як список, а як {type(products)}, конвертуємо...")
-                    products = [products] if products else []
+            # Очікуємо, що GPT поверне об'єкт з полями "products" та "categories"
+            categories = []
+            if isinstance(result, dict):
+                if "products" in result:
+                    products = result["products"]
+                    if not isinstance(products, list):
+                        logger.warning(f"GPT повернув products не як список, а як {type(products)}, конвертуємо...")
+                        products = [products] if products else []
+                elif isinstance(result.get("items"), list):
+                    # fallback
+                    products = result.get("items", [])
+                elif isinstance(result.get("data"), list):
+                    products = result.get("data", [])
+                else:
+                    products = []
+
+                categories = result.get("categories", []) or []
+                if categories and not isinstance(categories, list):
+                    categories = [categories]
             elif isinstance(result, list):
                 products = result
             else:
@@ -1274,6 +1317,27 @@ HTML контент:
                     logger.warning(f"Товар {idx+1} без URL, пропущено: {product.get('name', 'Без назви')}")
             
             logger.info(f"Після видалення дублікатів залишилось {len(processed_products)} унікальних товарів")
+
+            # Обробляємо категорії (якщо GPT їх повернув): конвертуємо URL в абсолютні та видаляємо дублікати
+            processed_categories = []
+            seen_category_urls = set()
+            for idx, cat in enumerate(categories or []):
+                if not isinstance(cat, dict):
+                    continue
+                if cat.get("url") and cat["url"]:
+                    url_str = str(cat["url"]).strip()
+                    if not url_str.startswith("http"):
+                        if url_str.startswith("/"):
+                            parsed_base = urlparse(category_url)
+                            cat["url"] = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
+                        else:
+                            cat["url"] = urljoin(category_url, url_str)
+                    normalized_url = cat["url"].split('#')[0].split('?')[0].rstrip('/')
+                    if normalized_url and normalized_url not in seen_category_urls:
+                        seen_category_urls.add(normalized_url)
+                        processed_categories.append({"name": cat.get("name") or "", "url": normalized_url})
+                else:
+                    continue
             
             # Додаємо інформацію про токени
             usage = response.usage
@@ -1281,6 +1345,8 @@ HTML контент:
                 logger.info(f"Використано токенів для парсингу товарів категорії: {usage.total_tokens}")
             
             logger.info(f"Знайдено товарів у категорії: {len(processed_products)} (з {len(products)} отриманих від GPT)")
+            if processed_categories:
+                logger.info(f"Додатково знайдено кандидатів категорій: {len(processed_categories)}")
             
             # Якщо товарів дуже мало, попереджаємо
             if len(processed_products) < 5:
@@ -1290,7 +1356,7 @@ HTML контент:
                 logger.warning("  3. HTML структура може відрізнятися від очікуваної")
                 logger.warning("  4. GPT міг пропустити товари через обмеження контексту")
             
-            return processed_products
+            return {"products": processed_products, "categories": processed_categories}
         except json.JSONDecodeError as e:
             logger.error(f"Помилка парсингу JSON від GPT для категорії {category_url}: {str(e)}")
             logger.error(f"Відповідь GPT (перші 1000 символів): {result_text[:1000] if 'result_text' in locals() else 'N/A'}")

@@ -1398,7 +1398,7 @@ function updateCharacteristicChoicePhotoPreview() {
     preview.innerHTML = `
         <div class="flex items-center gap-3">
             <img src="${escapeHtml(value)}" alt="Попередній перегляд" class="w-14 h-14 rounded border border-gray-300 object-cover">
-            <div class="text-xs text-gray-700 break-all">${escapeHtml(value)}</div>
+            <div class="text-xs text-gray-600">Фото вибрано</div>
         </div>
     `;
 }

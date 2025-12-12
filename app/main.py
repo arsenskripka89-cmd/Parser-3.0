@@ -1486,6 +1486,8 @@ async def add_characteristic(char_data: CharacteristicAdd):
         "category_path": char_data.category_path or [],
         "group_id": char_data.group_id,
         "photo_url": char_data.photo_url,
+        "choices": char_data.choices or [],
+        "brand_choices": char_data.brand_choices or [],
         "created_at": datetime.now().isoformat(),
         "updated_at": datetime.now().isoformat()
     }
@@ -1520,6 +1522,7 @@ async def update_characteristic(char_id: str, char_data: CharacteristicAdd):
         "group_id": char_data.group_id,
         "photo_url": char_data.photo_url,
         "choices": char_data.choices or [],
+        "brand_choices": char_data.brand_choices or [],
         "updated_at": datetime.now().isoformat()
     })
     

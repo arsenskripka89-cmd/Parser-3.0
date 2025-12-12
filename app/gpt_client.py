@@ -1090,15 +1090,27 @@ HTML контент:
             except:
                 return "Категорія"
 
-    def parse_category_products(self, category_url: str) -> list:
-        """Парсить список товарів з категорії через GPT"""
+    def parse_category_products(self, category_url: str) -> Dict:
+        """
+        Парсить сторінку категорії та повертає розділено:
+        - products: список товарів
+        - categories: список підкатегорій (якщо сторінка містить переважно категорії)
+        - page_type: product_list | category_list | mixed | unknown
+
+        Це потрібно, щоб відрізняти "сторінку зі списком товарів" від "сторінки зі списком підкатегорій"
+        і не зберігати категорії як товари.
+        """
         try:
             content = self._fetch_page_content(category_url)
             # Використовуємо спеціальну оптимізацію для товарів (зберігаємо важливі частини)
             optimized_content = self._optimize_html_for_products(content)
             
             system_prompt = """Ти експерт з парсингу товарів з інтернет-магазинів.
-Проаналізуй HTML контент сторінки категорії та витягни список ВСІХ товарів на цій сторінці.
+Проаналізуй HTML контент сторінки розділу (категорії) та ВІДОКРЕМИ:
+1) ТОВАРИ (product detail pages)
+2) ПІДКАТЕГОРІЇ (category/listing pages)
+
+КРИТИЧНО: НЕ ПОВЕРТАЙ КАТЕГОРІЇ У СПИСКУ "products".
 
 КРИТИЧНО ВАЖЛИВО - ТИ ПОВИНЕН ЗНАЙТИ ВСІ ТОВАРИ БЕЗ ВИНЯТКУ!
 
@@ -1149,6 +1161,19 @@ HTML контент:
 - Перевір навіть другорядні блоки та каруселі
 - ОСОБЛИВО УВАЖНО перевір JSON-LD дані - там може бути повний список товарів
 
+== Як відрізнити товар від категорії ==
+Товар (product detail page) зазвичай:
+- має ціну/availability/кнопку "Купити/В кошик" у карточці
+- або присутній у JSON-LD як @type="Product"
+- або URL виглядає як сторінка конкретного товару (часто глибший шлях, інколи .html)
+
+Категорія/підкатегорія (listing page) зазвичай:
+- показує інші підкатегорії, фільтри, сортировку, пагінацію
+- не має ознак конкретного товару (sku/ціна/offer) у самій карточці
+- URL часто веде на розділ/каталог/категорію (але назви можуть відрізнятись — орієнтуйся на ознаки сторінки)
+
+Якщо ти НЕ ВПЕВНЕНИЙ — віднеси елемент до categories, а не до products.
+
 Для кожного товару витягни:
 1. Назва товару (name) - ОБОВ'ЯЗКОВО! Повна назва товару зі сторінки
 2. URL товару (url) - ОБОВ'ЯЗКОВО! Повний абсолютний URL посилання на товар
@@ -1171,18 +1196,33 @@ HTML контент:
 
 ПОМНИ: КРАЩЕ ЗНАЙТИ БАГАТО ТОВАРІВ (навіть з повтореннями), НІЖ ПРОПУСТИТИ ЇХ!
 
-Поверни результат у форматі JSON об'єкта з полем "products" (масив), де кожен товар має:
+== Формат відповіді ==
+Поверни JSON об'єкт із трьома полями:
+1) page_type: "product_list" | "category_list" | "mixed" | "unknown"
+   - product_list: на сторінці переважно товари
+   - category_list: на сторінці переважно підкатегорії/розділи, а товарів немає або майже немає
+   - mixed: є і товари, і підкатегорії
+   - unknown: не вдалося визначити
+
+2) products: масив товарів (лише product detail pages), кожен має:
 {
-  "products": [
-    {
-      "name": "Назва товару",
-      "url": "https://example.com/product/123",
-      "sku": "123456" або null,
-      "price": 999.99 або null,
-      "availability": "в наявності" | "немає в наявності" | "під замовлення" або null
-    }
-  ]
-}"""
+  "name": "Назва товару",
+  "url": "https://example.com/product/123",
+  "sku": "123456" або null,
+  "price": 999.99 або null,
+  "availability": "в наявності" | "немає в наявності" | "під замовлення" або null
+}
+
+3) categories: масив підкатегорій (listing pages), кожна має:
+{
+  "name": "Назва підкатегорії",
+  "url": "https://example.com/category/sub"
+}
+
+ВАЖЛИВО:
+- НЕ додавати пагінацію/сортування/фільтри як категорії (page=, sort=, filter= тощо)
+- НЕ повертати URL, що дорівнює URL поточної сторінки категорії
+"""
 
             user_prompt = f"""Проаналізуй цей HTML контент сторінки категорії та витягни список ВСІХ товарів.
 
@@ -1201,7 +1241,7 @@ URL категорії: {category_url}
 HTML контент:
 {optimized_content}
 
-Поверни список товарів у форматі JSON об'єкта з полем "products" (масив ВСІХ товарів)."""
+Поверни результат у форматі JSON об'єкта з полями page_type, products, categories."""
 
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
@@ -1223,74 +1263,130 @@ HTML контент:
                 logger.error(f"Повна відповідь GPT: {result_text}")
                 raise Exception(f"Помилка парсингу JSON від GPT: {str(e)}")
             
-            # Очікуємо, що GPT поверне об'єкт з полем "products"
-            if "products" in result:
-                products = result["products"]
-                if not isinstance(products, list):
-                    logger.warning(f"GPT повернув products не як список, а як {type(products)}, конвертуємо...")
-                    products = [products] if products else []
-            elif isinstance(result, list):
-                products = result
-            else:
-                products = []
-                logger.warning(f"GPT повернув неочікуваний формат: {type(result)}, ключі: {result.keys() if isinstance(result, dict) else 'N/A'}")
-                logger.warning(f"Повна відповідь GPT: {result_text[:2000]}")
-            
-            logger.info(f"Витягнуто товарів з відповіді GPT: {len(products)}")
-            
-            # Додаткова перевірка: якщо товарів менше 10, можливо GPT пропустив щось
-            if len(products) < 10:
-                logger.warning(f"УВАГА: Знайдено лише {len(products)} товарів у категорії {category_url}. Можливо, GPT пропустив товари або вони на інших сторінках (пагінація).")
-            
-            # Обробляємо товари: конвертуємо відносні URL в абсолютні та видаляємо дублікати
+            if not isinstance(result, dict):
+                logger.warning(f"GPT повернув неочікуваний формат (не dict): {type(result)}")
+                result = {}
+
+            page_type = (result.get("page_type") or "").strip() if isinstance(result.get("page_type"), str) else ""
+            raw_products = result.get("products", [])
+            raw_categories = result.get("categories", [])
+
+            if raw_products and not isinstance(raw_products, list):
+                logger.warning(f"GPT повернув products не як список, а як {type(raw_products)}, конвертуємо...")
+                raw_products = [raw_products]
+            if raw_categories and not isinstance(raw_categories, list):
+                logger.warning(f"GPT повернув categories не як список, а як {type(raw_categories)}, конвертуємо...")
+                raw_categories = [raw_categories]
+
+            if not isinstance(raw_products, list):
+                raw_products = []
+            if not isinstance(raw_categories, list):
+                raw_categories = []
+
+            logger.info(f"Витягнуто з відповіді GPT: products={len(raw_products)}, categories={len(raw_categories)}, page_type='{page_type or 'N/A'}'")
+
+            # Обробляємо елементи: конвертуємо відносні URL в абсолютні, нормалізуємо та видаляємо дублікати
             from urllib.parse import urljoin, urlparse
             
-            processed_products = []
-            seen_urls = set()  # Для видалення дублікатів за URL
-            
-            for idx, product in enumerate(products):
-                # Конвертуємо відносний URL в абсолютний
-                if product.get("url") and product["url"]:
-                    url_str = str(product["url"]).strip()
-                    if not url_str.startswith("http"):
-                        if url_str.startswith("/"):
-                            parsed_base = urlparse(category_url)
-                            product["url"] = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
-                        else:
-                            product["url"] = urljoin(category_url, url_str)
-                    
-                    # Нормалізуємо URL (видаляємо фрагменти, параметри сортування тощо)
-                    normalized_url = product["url"].split('#')[0].split('?')[0].rstrip('/')
-                    
-                    # Перевіряємо, чи це не дублікат
-                    if normalized_url not in seen_urls:
-                        seen_urls.add(normalized_url)
-                        product["url"] = normalized_url
-                        processed_products.append(product)
-                        logger.debug(f"Товар {len(processed_products)}: {product.get('name', 'Без назви')} - {product.get('url')}")
+            def normalize_url(u: Optional[str], base: str) -> Optional[str]:
+                if not u:
+                    return None
+                url_str = str(u).strip()
+                if not url_str:
+                    return None
+                if not url_str.startswith("http"):
+                    if url_str.startswith("/"):
+                        parsed_base = urlparse(base)
+                        url_str = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
                     else:
-                        logger.debug(f"Пропущено дублікат товару: {product.get('name', 'Без назви')} - {normalized_url}")
+                        url_str = urljoin(base, url_str)
+                # нормалізація (без query/fragment)
+                url_str = url_str.split("#")[0].split("?")[0].rstrip("/")
+                return url_str or None
+
+            category_url_norm = normalize_url(category_url, category_url)
+
+            processed_products: list = []
+            processed_categories: list = []
+            seen_product_urls: set = set()
+            seen_category_urls: set = set()
+
+            # Фільтр для явних "не-категорій" у categories (пагінація/сортування/фільтри)
+            def looks_like_non_category_url(u: str) -> bool:
+                lowered = u.lower()
+                # query вже відрізаний normalize_url, але залишаємо ще кілька грубих патернів
+                bad_fragments = ["/page/", "/p/", "/filter/", "/sort/", "page-", "sort-", "filter-"]
+                return any(x in lowered for x in bad_fragments)
+
+            for idx, product in enumerate(raw_products):
+                if not isinstance(product, dict):
+                    continue
+                p_url = normalize_url(product.get("url"), category_url)
+                if not p_url:
+                    continue
+                if category_url_norm and p_url == category_url_norm:
+                    continue
+                if p_url in seen_product_urls:
+                    continue
+                name = (product.get("name") or "").strip()
+                if not name:
+                    name = "Товар без назви"
+                processed_products.append({
+                    "name": name,
+                    "url": p_url,
+                    "sku": product.get("sku"),
+                    "price": product.get("price"),
+                    "availability": product.get("availability"),
+                })
+                seen_product_urls.add(p_url)
+
+            for idx, cat in enumerate(raw_categories):
+                if not isinstance(cat, dict):
+                    continue
+                c_url = normalize_url(cat.get("url"), category_url)
+                if not c_url:
+                    continue
+                if category_url_norm and c_url == category_url_norm:
+                    continue
+                if looks_like_non_category_url(c_url):
+                    continue
+                if c_url in seen_category_urls:
+                    continue
+                c_name = (cat.get("name") or "").strip()
+                if not c_name:
+                    continue
+                processed_categories.append({
+                    "name": c_name,
+                    "url": c_url,
+                })
+                seen_category_urls.add(c_url)
+
+            # Автовизначення page_type, якщо GPT не заповнив або заповнив некоректно
+            allowed_page_types = {"product_list", "category_list", "mixed", "unknown"}
+            if page_type not in allowed_page_types:
+                if processed_products and processed_categories:
+                    page_type = "mixed"
+                elif processed_products:
+                    page_type = "product_list"
+                elif processed_categories:
+                    page_type = "category_list"
                 else:
-                    logger.warning(f"Товар {idx+1} без URL, пропущено: {product.get('name', 'Без назви')}")
-            
-            logger.info(f"Після видалення дублікатів залишилось {len(processed_products)} унікальних товарів")
+                    page_type = "unknown"
+
+            logger.info(
+                f"Після пост-обробки: products={len(processed_products)}, categories={len(processed_categories)}, page_type='{page_type}'"
+            )
             
             # Додаємо інформацію про токени
             usage = response.usage
             if usage:
                 logger.info(f"Використано токенів для парсингу товарів категорії: {usage.total_tokens}")
             
-            logger.info(f"Знайдено товарів у категорії: {len(processed_products)} (з {len(products)} отриманих від GPT)")
-            
-            # Якщо товарів дуже мало, попереджаємо
-            if len(processed_products) < 5:
-                logger.warning(f"УВАГА: Знайдено лише {len(processed_products)} товарів у категорії {category_url}. Можливі причини:")
-                logger.warning("  1. Товари можуть бути на інших сторінках (пагінація)")
-                logger.warning("  2. Товари можуть завантажуватися динамічно через JavaScript")
-                logger.warning("  3. HTML структура може відрізнятися від очікуваної")
-                logger.warning("  4. GPT міг пропустити товари через обмеження контексту")
-            
-            return processed_products
+            return {
+                "page_type": page_type,
+                "products": processed_products,
+                "categories": processed_categories,
+            }
         except json.JSONDecodeError as e:
             logger.error(f"Помилка парсингу JSON від GPT для категорії {category_url}: {str(e)}")
             logger.error(f"Відповідь GPT (перші 1000 символів): {result_text[:1000] if 'result_text' in locals() else 'N/A'}")

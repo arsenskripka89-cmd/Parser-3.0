@@ -1060,6 +1060,7 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
     """Асинхронна функція для пошуку товарів у вибраних категоріях"""
     from .gpt_client import GPTClient
     import uuid
+    from urllib.parse import urlsplit, urlunsplit
     
     logger.info(f"Початок discover_products: task_id={task_id}, competitor_id={competitor_id}, category_ids={category_ids}")
     
@@ -1088,6 +1089,35 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
             raise Exception("Немає активного API ключа. Додайте та активуйте ключ у налаштуваннях.")
         
         client = GPTClient(api_key_obj.key)
+
+        def normalize_url(url: Optional[str]) -> Optional[str]:
+            """Нормалізує URL: прибирає query/fragment та завершує без '/'."""
+            if not url:
+                return None
+            try:
+                url_str = str(url).strip()
+                if not url_str:
+                    return None
+                parts = urlsplit(url_str)
+                normalized = urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+                return normalized.rstrip("/") if normalized else None
+            except Exception:
+                # У випадку некоректного URL не валимо задачу, просто пропускаємо
+                return None
+
+        # Збираємо всі URL категорій конкурента, щоб відфільтрувати випадки,
+        # коли GPT повертає категорії замість товарів.
+        category_urls: set = set()
+
+        def collect_category_urls(categories: list):
+            for cat in categories or []:
+                cat_url = normalize_url(cat.get("url"))
+                if cat_url:
+                    category_urls.add(cat_url)
+                if cat.get("children"):
+                    collect_category_urls(cat.get("children"))
+
+        collect_category_urls(competitor_data.get("categories", []))
         
         # Знаходимо категорії за ID (рекурсивно)
         def find_categories_by_ids(categories, ids):
@@ -1126,7 +1156,39 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
         
         # Завантажуємо базу товарів
         db = await load_db()
-        existing_urls = {p.get("url") for p in db["products"] if p.get("url")}
+        existing_urls = set()
+        for p in db.get("products", []):
+            u = normalize_url(p.get("url"))
+            if u:
+                existing_urls.add(u)
+
+        # Прибираємо раніше "знайдені" категорії, які помилково були збережені як товари
+        # (тільки для записів, доданих через category discovery).
+        removed_category_like = 0
+        if db.get("products"):
+            cleaned_products = []
+            for p in db["products"]:
+                p_url = normalize_url(p.get("url"))
+                if (
+                    p.get("from_category_discovery") is True
+                    and p.get("competitor_id") == competitor_id
+                    and p_url
+                    and p_url in category_urls
+                ):
+                    removed_category_like += 1
+                    continue
+                cleaned_products.append(p)
+            if removed_category_like > 0:
+                db["products"] = cleaned_products
+                await save_db(db)
+                existing_urls = set()
+                for p in db.get("products", []):
+                    u = normalize_url(p.get("url"))
+                    if u:
+                        existing_urls.add(u)
+                logger.warning(
+                    f"Очищено {removed_category_like} записів, які були категоріями (URL збігався з деревом категорій), а не товарами."
+                )
         
         all_products = []
         success_count = 0
@@ -1149,7 +1211,35 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                 # Парсимо товари з категорії
                 logger.info(f"Парсинг товарів з категорії: {category.get('name')} ({category_url})")
                 products = client.parse_category_products(category_url)
-                logger.info(f"GPT знайшов {len(products)} товарів у категорії '{category.get('name')}'")
+                logger.info(f"GPT знайшов {len(products)} елементів у категорії '{category.get('name')}'")
+
+                # Додатковий захист: GPT інколи повертає посилання на категорії замість товарів.
+                # Відфільтровуємо:
+                # - елементи з полем children (типова ознака категорії)
+                # - URL, які збігаються з будь-яким URL категорії в дереві конкурента
+                filtered_products = []
+                skipped_as_category = 0
+                for item in products or []:
+                    if not isinstance(item, dict):
+                        continue
+                    if "children" in item:
+                        skipped_as_category += 1
+                        continue
+                    item_url = normalize_url(item.get("url"))
+                    if not item_url:
+                        continue
+                    if item_url in category_urls:
+                        skipped_as_category += 1
+                        continue
+                    item["url"] = item_url
+                    filtered_products.append(item)
+
+                if skipped_as_category > 0:
+                    logger.warning(
+                        f"Відфільтровано {skipped_as_category} елементів як категорії (URL збігаються з деревом категорій або мають children)."
+                    )
+                products = filtered_products
+                logger.info(f"Після фільтрації залишилось {len(products)} товарів у категорії '{category.get('name')}'")
                 
                 # Формуємо category_path для товарів (спрощена версія - використовуємо назву категорії)
                 category_path = [category.get("name", "")]
@@ -1157,7 +1247,7 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                 # Додаємо товари до списку
                 products_added_count = 0
                 for product in products:
-                    product_url = product.get("url")
+                    product_url = normalize_url(product.get("url"))
                     if not product_url:
                         continue  # Пропускаємо товари без URL
                     
@@ -1187,7 +1277,7 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                     else:
                         logger.info(f"Товар вже існує, пропущено: {product_url}")
                 
-                logger.info(f"З категорії '{category.get('name')}' додано {products_added_count} нових товарів (всього знайдено: {len(products)})")
+                logger.info(f"З категорії '{category.get('name')}' додано {products_added_count} нових товарів (після фільтрації: {len(products)})")
                 success_count += 1
                 await update_task_progress(task_id, done=idx + 1, total=total_categories)
                 

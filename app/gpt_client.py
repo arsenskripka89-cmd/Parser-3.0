@@ -6,6 +6,7 @@ from typing import Dict, Optional
 from openai import OpenAI
 import httpx
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
 # Налаштування логування
 logging.basicConfig(level=logging.INFO)
@@ -1102,6 +1103,140 @@ HTML контент:
         """
         try:
             content = self._fetch_page_content(category_url)
+            # Витягуємо всі URL, які реально присутні в HTML (щоб GPT не "галюцинував" товари)
+            # та одразу готуємо пагінацію (сторінка 2 / next / load more).
+            def normalize_url(u: Optional[str], base: str) -> Optional[str]:
+                if not u:
+                    return None
+                url_str = str(u).strip()
+                if not url_str:
+                    return None
+                if not url_str.startswith("http"):
+                    url_str = urljoin(base, url_str)
+                # нормалізація (без query/fragment)
+                url_str = url_str.split("#")[0].split("?")[0].rstrip("/")
+                return url_str or None
+
+            def extract_urls_from_html(html: str, base: str) -> set:
+                """
+                Дістає всі URL, що реально присутні в HTML/JSON-LD.
+                Використовується як "джерело правди", щоб не зберігати вигадані GPT URL.
+                """
+                urls: set = set()
+                try:
+                    soup = BeautifulSoup(html, "html.parser")
+
+                    # 1) href
+                    for a in soup.select("a[href]"):
+                        u = normalize_url(a.get("href"), base)
+                        if u:
+                            urls.add(u)
+
+                    # 2) data-href/data-url (часто для SPA/кнопок)
+                    for el in soup.select("[data-href],[data-url]"):
+                        u = normalize_url(el.get("data-href") or el.get("data-url"), base)
+                        if u:
+                            urls.add(u)
+
+                    # 3) JSON-LD: рекурсивно витягуємо строки, схожі на URL
+                    def walk(obj):
+                        if isinstance(obj, dict):
+                            for k, v in obj.items():
+                                # часто URL лежить у url/@id/item/offers.url
+                                if isinstance(v, (dict, list)):
+                                    walk(v)
+                                elif isinstance(v, str):
+                                    s = v.strip()
+                                    if not s:
+                                        continue
+                                    # пропускаємо не-URL
+                                    if s.startswith("http") or s.startswith("/") or s.startswith("./"):
+                                        u2 = normalize_url(s, base)
+                                        if u2:
+                                            urls.add(u2)
+                        elif isinstance(obj, list):
+                            for it in obj:
+                                walk(it)
+
+                    for script in soup.find_all("script", attrs={"type": re.compile(r"application/ld\+json", re.I)}):
+                        raw = script.string
+                        if not raw:
+                            continue
+                        try:
+                            data = json.loads(raw)
+                        except Exception:
+                            continue
+                        walk(data)
+                except Exception as e:
+                    logger.warning(f"Не вдалося витягнути URL з HTML для фільтрації: {e}")
+                return urls
+
+            def extract_pagination_urls_from_html(html: str, base: str, current_url: str) -> list:
+                """
+                Універсально шукає посилання на наступні сторінки категорії:
+                - <link rel="next">
+                - пагінація (цифри/next/следующая)
+                - кнопка 'load more' / 'загрузить' (data-url/href)
+                """
+                current_norm = normalize_url(current_url, current_url)
+                result: set = set()
+                try:
+                    soup = BeautifulSoup(html, "html.parser")
+
+                    # rel=next у <link>
+                    for ln in soup.find_all("link"):
+                        rel = ln.get("rel") or []
+                        if any(str(r).lower() == "next" for r in rel):
+                            u = normalize_url(ln.get("href"), base)
+                            if u and u != current_norm:
+                                result.add(u)
+
+                    # пагінація у <a>
+                    pagination_parent_re = re.compile(r"pagination|pager|page-numbers|pagenav|pages", re.I)
+                    for a in soup.select("a[href]"):
+                        txt = (a.get_text(" ", strip=True) or "").lower()
+                        href = a.get("href")
+                        if not href:
+                            continue
+                        parent = a.find_parent(class_=pagination_parent_re)
+                        cls = " ".join(a.get("class", [])).lower()
+                        looks_pagination = bool(parent) or bool(pagination_parent_re.search(cls))
+                        if looks_pagination and (txt.isdigit() or "next" in txt or "след" in txt or "наступ" in txt):
+                            u = normalize_url(href, base)
+                            if u and u != current_norm:
+                                result.add(u)
+
+                    # Кнопки "load more" (часто не в пагінації)
+                    load_more_markers = ["load more", "show more", "more", "загруз", "показ", "ще", "далі", "далее"]
+                    for el in soup.find_all(["a", "button"]):
+                        txt = (el.get_text(" ", strip=True) or "").lower()
+                        if not txt:
+                            continue
+                        if not any(m in txt for m in load_more_markers):
+                            continue
+                        href = el.get("href") or el.get("data-href") or el.get("data-url")
+                        u = normalize_url(href, base)
+                        if u and u != current_norm:
+                            result.add(u)
+
+                    # Fallback: явні page параметри в будь-яких href (навіть без контейнера пагінації)
+                    for a in soup.select("a[href]"):
+                        href = a.get("href", "")
+                        if not href:
+                            continue
+                        low = href.lower()
+                        if any(p in low for p in ["?page=", "&page=", "?p=", "&p=", "/page/"]):
+                            u = normalize_url(href, base)
+                            if u and u != current_norm:
+                                result.add(u)
+                except Exception as e:
+                    logger.warning(f"Не вдалося витягнути пагінацію з HTML: {e}")
+
+                # Повертаємо детерміновано (стабільно), щоб легше дебажити
+                return sorted(result)
+
+            html_urls = extract_urls_from_html(content, category_url)
+            pagination_urls = extract_pagination_urls_from_html(content, category_url, category_url)
             # Використовуємо спеціальну оптимізацію для товарів (зберігаємо важливі частини)
             optimized_content = self._optimize_html_for_products(content)
             
@@ -1286,24 +1421,6 @@ HTML контент:
             logger.info(f"Витягнуто з відповіді GPT: products={len(raw_products)}, categories={len(raw_categories)}, page_type='{page_type or 'N/A'}'")
 
             # Обробляємо елементи: конвертуємо відносні URL в абсолютні, нормалізуємо та видаляємо дублікати
-            from urllib.parse import urljoin, urlparse
-            
-            def normalize_url(u: Optional[str], base: str) -> Optional[str]:
-                if not u:
-                    return None
-                url_str = str(u).strip()
-                if not url_str:
-                    return None
-                if not url_str.startswith("http"):
-                    if url_str.startswith("/"):
-                        parsed_base = urlparse(base)
-                        url_str = f"{parsed_base.scheme}://{parsed_base.netloc}{url_str}"
-                    else:
-                        url_str = urljoin(base, url_str)
-                # нормалізація (без query/fragment)
-                url_str = url_str.split("#")[0].split("?")[0].rstrip("/")
-                return url_str or None
-
             category_url_norm = normalize_url(category_url, category_url)
 
             processed_products: list = []
@@ -1339,6 +1456,18 @@ HTML контент:
                     "availability": product.get("availability"),
                 })
                 seen_product_urls.add(p_url)
+
+            # Жорстка пост-перевірка: прибираємо "вигадані" GPT URL, якщо можемо підтвердити HTML.
+            # Це критично для кейсів на кшталт romb.ua, де GPT може повернути неіснуючі на сторінці товари.
+            # Фільтр вмикаємо лише якщо ми реально витягнули достатньо URL із HTML (щоб не ламати JS-only сайти).
+            if len(html_urls) >= 10 and processed_products:
+                before = len(processed_products)
+                processed_products = [p for p in processed_products if p.get("url") in html_urls]
+                removed = before - len(processed_products)
+                if removed > 0:
+                    logger.warning(
+                        f"Відфільтровано {removed} товарів: їх URL не знайдено в HTML/JSON-LD сторінки (захист від помилкових GPT результатів)."
+                    )
 
             for idx, cat in enumerate(raw_categories):
                 if not isinstance(cat, dict):
@@ -1386,6 +1515,7 @@ HTML контент:
                 "page_type": page_type,
                 "products": processed_products,
                 "categories": processed_categories,
+                "pagination_urls": pagination_urls,
             }
         except json.JSONDecodeError as e:
             logger.error(f"Помилка парсингу JSON від GPT для категорії {category_url}: {str(e)}")

@@ -799,8 +799,13 @@ async def parse_competitor_categories(task_id: str, competitor_id: str):
             raise Exception("Немає активного API ключа. Додайте та активуйте ключ у налаштуваннях.")
         
         client = GPTClient(api_key_obj.key)
-        categories = client.parse_competitor_categories(competitor_data["url"])
-        
+        categories_result = client.parse_competitor_categories(competitor_data["url"])
+        if isinstance(categories_result, dict):
+            categories = categories_result.get("categories", [])
+            competitor_data["site_profile"] = categories_result.get("site_profile")
+        else:
+            categories = categories_result
+
         # Оновлюємо категорії конкурента
         competitor_data["categories"] = categories
         competitor_data["last_parsed"] = datetime.now().isoformat()
@@ -850,7 +855,12 @@ async def update_competitor_categories(task_id: str, competitor_id: str):
         logger.info(f"Запуск парсингу категорій з URL: {competitor_data['url']}")
         try:
             client = GPTClient(api_key_obj.key)
-            new_categories = client.parse_competitor_categories(competitor_data["url"])
+            categories_result = client.parse_competitor_categories(competitor_data["url"])
+            if isinstance(categories_result, dict):
+                new_categories = categories_result.get("categories", [])
+                competitor_data["site_profile"] = categories_result.get("site_profile")
+            else:
+                new_categories = categories_result
             logger.info(f"Парсинг завершено. Знайдено нових категорій: {len(new_categories)}")
         except Exception as e:
             import traceback

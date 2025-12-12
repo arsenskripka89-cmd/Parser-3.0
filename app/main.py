@@ -9,6 +9,7 @@ import uuid
 import asyncio
 import logging
 from datetime import datetime
+from urllib.parse import urlparse, unquote
 
 logger = logging.getLogger(__name__)
 from .models import (
@@ -20,7 +21,7 @@ from .parser import (
     load_db, save_db, load_settings, save_settings,
     parse_product, parse_product_full, save_result, is_first_parse, get_active_api_key,
     get_token_statistics, save_token_usage, load_competitors, save_competitors,
-    parse_all_products, parse_single_product, parse_competitor_categories,
+    parse_all_products, parse_single_product, parse_single_product_full, parse_competitor_categories,
     update_competitor_categories, discover_products, parse_newly_discovered_products,
     parse_filtered_products, parse_selected_products,
     load_progress, save_progress, get_task_status,
@@ -72,9 +73,20 @@ async def add_product(product: ProductAdd):
     """Додати новий товар"""
     db = await load_db()
     
+    raw_name = (product.name or "").strip()
+    if not raw_name:
+        # Якщо назву не передали — формуємо максимально просту за URL
+        try:
+            parsed = urlparse(product.url)
+            last_part = (parsed.path or "").rstrip("/").split("/")[-1]
+            last_part = unquote(last_part).replace("-", " ").replace("_", " ").strip()
+            raw_name = last_part if last_part else "Новий товар"
+        except Exception:
+            raw_name = "Новий товар"
+    
     new_product = {
         "id": str(uuid.uuid4()),
-        "name": product.name,
+        "name": raw_name,
         "url": product.url,
         "status": "pending",
         "name_parsed": None,
@@ -1129,6 +1141,34 @@ async def create_parse_product_task(product_id: str, background_tasks: Backgroun
     return {"task_id": task_id}
 
 
+@app.post("/tasks/parse_product_full/{product_id}")
+async def create_parse_product_full_task(product_id: str, background_tasks: BackgroundTasks):
+    """Створити задачу на повний парсинг одного товару (як 'Парсинг всіх даних')"""
+    task_id = str(uuid.uuid4())
+    
+    # Перевіряємо, чи товар існує
+    db = await load_db()
+    product_exists = any(p["id"] == product_id for p in db["products"])
+    if not product_exists:
+        raise HTTPException(status_code=404, detail="Товар не знайдено")
+    
+    # Ініціалізуємо прогрес
+    progress = await load_progress()
+    progress["tasks"][task_id] = {
+        "type": "parse_product_full",
+        "total": 1,
+        "done": 0,
+        "errors": [],
+        "status": "running"
+    }
+    await save_progress(progress)
+    
+    # Запускаємо фонову задачу
+    asyncio.create_task(parse_single_product_full(task_id, product_id))
+    
+    return {"task_id": task_id}
+
+
 @app.post("/tasks/parse_categories/{competitor_id}")
 async def create_parse_categories_task(competitor_id: str, background_tasks: BackgroundTasks):
     """Створити задачу на парсинг категорій конкурента"""
@@ -1312,6 +1352,7 @@ async def get_task_status_endpoint(task_id: str):
         raise HTTPException(status_code=404, detail="Задача не знайдено")
     
     result = {
+        "type": task.get("type", ""),
         "total": task.get("total", 0),
         "done": task.get("done", 0),
         "errors": task.get("errors", []),

@@ -76,6 +76,35 @@ async function createParseProductTask(productId) {
     }
 }
 
+// Створення задачі на повний парсинг одного товару (як "Парсинг всіх даних")
+async function createParseProductFullTask(productId) {
+    try {
+        const response = await fetch(`/tasks/parse_product_full/${productId}`, {
+            method: 'POST'
+        });
+        
+        if (!response.ok) {
+            throw new Error('Помилка створення задачі');
+        }
+        
+        const data = await response.json();
+        currentTaskId = data.task_id;
+        
+        // Показуємо прогрес-бар
+        showTaskProgress('Парсинг всіх даних товару...');
+        startPolling(currentTaskId);
+        
+        // Блокуємо UI
+        setParsingActive(true);
+        
+        return data.task_id;
+    } catch (error) {
+        console.error('Помилка створення задачі:', error);
+        showToast('Помилка створення задачі: ' + error.message, 'error');
+        throw error;
+    }
+}
+
 // Створення задачі на парсинг категорій конкурента
 async function createParseCategoriesTask(competitorId) {
     try {
@@ -583,6 +612,12 @@ function restoreButtons() {
     if (parseNowBtn && parseNowBtn.textContent.includes('В процесі')) {
         parseNowBtn.disabled = false;
         parseNowBtn.textContent = 'Спарсити зараз';
+    }
+    
+    const parseFullBtn = document.getElementById('parseFullBtn');
+    if (parseFullBtn && parseFullBtn.textContent.includes('В процесі')) {
+        parseFullBtn.disabled = false;
+        parseFullBtn.textContent = 'Парсинг всіх даних';
     }
     
     // Відновлюємо кнопки на сторінці конкурента

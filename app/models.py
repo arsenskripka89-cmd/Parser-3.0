@@ -22,7 +22,7 @@ class Product(BaseModel):
 
 
 class ProductAdd(BaseModel):
-    name: str
+    name: Optional[str] = None
     url: str
 
 

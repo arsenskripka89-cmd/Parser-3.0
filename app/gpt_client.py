@@ -23,8 +23,64 @@ class GPTClient:
         self.client = OpenAI(api_key=api_key, timeout=120.0)  # Збільшено до 120 секунд
         self.max_retries = 3
 
+    def _fetch_page_content_with_ai(self, url: str, timeout: float = 60.0) -> Optional[str]:
+        """Отримує HTML через вбудований AI браузер (GPT сам переходить на сайт)."""
+        try:
+            logger.info(f"Спроба отримати сторінку через AI браузер: {url}")
+            stream = self.client.responses.create(
+                model="gpt-4o-mini",
+                stream=True,
+                tools=[{"type": "browser"}],
+                input=[{
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": (
+                                "Перейди на вказаний URL, завантаж HTML та поверни сирий HTML без інтерпретації. "
+                                "URL: " + url
+                            )
+                        }
+                    ]
+                }],
+                max_output_tokens=9000,
+                temperature=0,
+            )
+
+            collected_chunks: list[str] = []
+            start_time = time.time()
+
+            for event in stream:
+                # Захист від зависання стріму
+                if time.time() - start_time > timeout:
+                    raise TimeoutError(f"Перевищено ліміт {timeout}s для AI браузера")
+
+                # Витягуємо текстову відповідь моделі
+                if getattr(event, "type", "") == "response.output_text.delta":
+                    chunk = getattr(event, "delta", "")
+                    if chunk:
+                        collected_chunks.append(chunk)
+                elif getattr(event, "type", "") == "response.error":
+                    error_message = getattr(event, "error", None)
+                    raise Exception(f"AI browser error: {error_message}")
+
+            ai_content = "".join(collected_chunks).strip()
+            if ai_content:
+                logger.info(f"AI браузер повернув {len(ai_content)} символів HTML")
+                return ai_content
+            logger.warning("AI браузер не повернув контент")
+            return None
+        except Exception as e:
+            logger.warning(f"Не вдалося отримати сторінку через AI браузер: {e}")
+            return None
+
     def _fetch_page_content(self, url: str, timeout: float = 30.0, max_retries: int = 3) -> str:
         """Отримує контент сторінки через HTTP запит з retry логікою"""
+        # Спочатку намагаємося дати ШІ самостійно перейти на сторінку
+        ai_content = self._fetch_page_content_with_ai(url, timeout=timeout * 2)
+        if ai_content:
+            return ai_content
+
         # Базові "браузерні" заголовки: деякі магазини віддають 415/406/403 без Accept/Accept-Language.
         base_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

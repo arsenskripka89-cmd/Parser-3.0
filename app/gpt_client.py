@@ -1069,7 +1069,18 @@ HTML контент:
             from urllib.parse import urljoin, urlparse
             import hashlib
 
-            base_domain = urlparse(url).netloc.replace("www.", "")
+            parsed_base_url = urlparse(url)
+            base_domain = parsed_base_url.netloc.replace("www.", "")
+            base_scheme = parsed_base_url.scheme or "https"
+
+            def normalize_url(raw_url: str) -> str:
+                """Повертає канонічний URL з урахуванням базової схеми та домену."""
+                parsed = urlparse(raw_url)
+                scheme = base_scheme
+                netloc = parsed.netloc.lower().replace("www.", "")
+                path = parsed.path.rstrip("/") or "/"
+                query = f"?{parsed.query}" if parsed.query else ""
+                return f"{scheme}://{netloc}{path}{query}"
 
             def process_category(cat, base_url):
                 """Обробляє категорію: конвертує URL, генерує ID та відфільтровує зайві домени"""
@@ -1097,6 +1108,9 @@ HTML контент:
                     )
                     return None
 
+                # Приводимо URL до канонічного вигляду (єдиний протокол, без дублікатів через слеші)
+                cat["url"] = normalize_url(cat.get("url", ""))
+
                 # Генеруємо ID на основі URL або назви, якщо його немає або він не валідний
                 if not cat.get("id") or cat["id"] == "":
                     # Створюємо ID на основі URL або назви
@@ -1123,9 +1137,14 @@ HTML контент:
                         if not processed_child:
                             continue
                         child_url = processed_child.get("url")
-                        if child_url and child_url not in seen_urls:
+                        if not child_url:
+                            continue
+
+                        normalized_child_url = normalize_url(child_url)
+                        if normalized_child_url not in seen_urls:
+                            processed_child["url"] = normalized_child_url
                             processed_children.append(processed_child)
-                            seen_urls.add(child_url)
+                            seen_urls.add(normalized_child_url)
                     cat["children"] = processed_children
                 else:
                     cat["children"] = []
@@ -1133,16 +1152,21 @@ HTML контент:
                 return cat
 
             def dedupe_categories(category_list):
-                """Видаляє дублікати категорій на одному рівні за URL"""
+                """Видаляє дублікати категорій на одному рівні за нормалізованим URL"""
                 deduped = []
                 seen = set()
                 for c in category_list:
                     if not c:
                         continue
                     url_val = c.get("url")
-                    if url_val and url_val not in seen:
+                    if not url_val:
+                        continue
+
+                    normalized = normalize_url(url_val)
+                    if normalized not in seen:
+                        c["url"] = normalized
                         deduped.append(c)
-                        seen.add(url_val)
+                        seen.add(normalized)
                 return deduped
 
             # Обробляємо всі категорії

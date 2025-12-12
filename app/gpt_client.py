@@ -248,7 +248,7 @@ class GPTClient:
                 important_parts.append(f"<!-- PRODUCT LINKS ({len(product_links)} total) -->\n" + "\n".join(product_links[:500]))
             
             # 4. JSON-LD структуровані дані (можуть містити товари) - ВАЖЛИВО!
-            json_ld_scripts = soup.find_all('script', type=re.compile('application/ld\+json', re.I))
+            json_ld_scripts = soup.find_all('script', type=re.compile(r'application/ld\+json', re.I))
             for script in json_ld_scripts[:10]:  # Збільшуємо до 10
                 script_text = script.string
                 if script_text:

@@ -1208,38 +1208,148 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                     )
                     continue
                 
-                # Парсимо товари з категорії
-                logger.info(f"Парсинг товарів з категорії: {category.get('name')} ({category_url})")
-                products = client.parse_category_products(category_url)
-                logger.info(f"GPT знайшов {len(products)} елементів у категорії '{category.get('name')}'")
+                # Додаткові евристики, що підлаштовуються під різні сайти:
+                # - не покладаємось тільки на page_type (бо у кожного конкурента різна структура)
+                # - робимо пост-класифікацію по URL/дереву категорій
+                # - якщо сторінка більше схожа на "category_list" -> йдемо вглиб у підкатегорії (з лімітами)
+                def looks_like_product_url(u: str) -> bool:
+                    """Евристика: URL схожий на сторінку товару (підлаштовується, не прив'язана до конкретного сайту)."""
+                    if not u:
+                        return False
+                    lowered = u.lower()
+                    # Явні патерни товарних сторінок (найчастіші на магазинах)
+                    product_markers = [
+                        "/product", "/products/", "/item", "/goods", "/tovar", "/product/",
+                        "/p/", "/sku/", "/catalog/product",
+                    ]
+                    if any(m in lowered for m in product_markers):
+                        return True
+                    # Часто товар має .html або містить цифри/sku у шляху
+                    path = urlsplit(u).path.lower()
+                    if path.endswith(".html") or path.endswith(".htm"):
+                        return True
+                    # якщо в останньому сегменті багато цифр — це часто товар
+                    last = (path.rstrip("/").split("/")[-1] or "")
+                    digit_count = sum(1 for ch in last if ch.isdigit())
+                    if digit_count >= 3:
+                        return True
+                    return False
 
-                # Додатковий захист: GPT інколи повертає посилання на категорії замість товарів.
-                # Відфільтровуємо:
-                # - елементи з полем children (типова ознака категорії)
-                # - URL, які збігаються з будь-яким URL категорії в дереві конкурента
-                filtered_products = []
-                skipped_as_category = 0
-                for item in products or []:
-                    if not isinstance(item, dict):
-                        continue
-                    if "children" in item:
-                        skipped_as_category += 1
-                        continue
-                    item_url = normalize_url(item.get("url"))
-                    if not item_url:
-                        continue
-                    if item_url in category_urls:
-                        skipped_as_category += 1
-                        continue
-                    item["url"] = item_url
-                    filtered_products.append(item)
+                def is_category_like_url(u: str) -> bool:
+                    """Евристика: URL схожий на сторінку категорії/лістингу."""
+                    if not u:
+                        return False
+                    lowered = u.lower()
+                    category_markers = ["/category", "/catalog", "/katalog", "/categories", "/shop/", "/c/"]
+                    if any(m in lowered for m in category_markers):
+                        return True
+                    return False
 
-                if skipped_as_category > 0:
-                    logger.warning(
-                        f"Відфільтровано {skipped_as_category} елементів як категорії (URL збігаються з деревом категорій або мають children)."
+                visited_listing_urls: set = set()
+
+                def crawl_listing(listing_url: str, depth: int, max_depth: int, max_pages: int) -> List[Dict]:
+                    """
+                    Парсить listing-сторінку, повертає список товарів.
+                    Якщо сторінка містить підкатегорії — рекурсивно проходить углиб (до max_depth),
+                    але з обмеженням max_pages для запобігання нескінченному обходу.
+                    """
+                    if not listing_url:
+                        return []
+                    if listing_url in visited_listing_urls:
+                        return []
+                    if len(visited_listing_urls) >= max_pages:
+                        return []
+                    visited_listing_urls.add(listing_url)
+
+                    logger.info(f"Парсинг сторінки категорії/лістингу (depth={depth}): {listing_url}")
+                    parsed = client.parse_category_products(listing_url)
+
+                    page_type = "unknown"
+                    raw_products = []
+                    raw_categories = []
+                    if isinstance(parsed, dict):
+                        page_type = (parsed.get("page_type") or "unknown")
+                        raw_products = parsed.get("products") or []
+                        raw_categories = parsed.get("categories") or []
+                    elif isinstance(parsed, list):
+                        # backward compatibility (якщо десь ще повертається старий формат)
+                        raw_products = parsed
+                    else:
+                        raw_products = []
+
+                    # 1) Фільтруємо кандидатів у товари (не залежимо від конкретної структури сайту)
+                    filtered_products: list = []
+                    skipped_as_category = 0
+                    for item in raw_products or []:
+                        if not isinstance(item, dict):
+                            continue
+                        if "children" in item:
+                            skipped_as_category += 1
+                            continue
+                        item_url = normalize_url(item.get("url"))
+                        if not item_url:
+                            continue
+                        # якщо URL є відомою категорією — це точно не товар
+                        if item_url in category_urls:
+                            skipped_as_category += 1
+                            continue
+                        # якщо URL очевидно схожий на категорію, а не на товар — пропускаємо
+                        if is_category_like_url(item_url) and not looks_like_product_url(item_url):
+                            skipped_as_category += 1
+                            continue
+                        item["url"] = item_url
+                        filtered_products.append(item)
+
+                    # 2) Підкатегорії (для обходу вглиб)
+                    discovered_subcategories: list = []
+                    for cat in raw_categories or []:
+                        if not isinstance(cat, dict):
+                            continue
+                        cat_url = normalize_url(cat.get("url"))
+                        if not cat_url:
+                            continue
+                        if cat_url == normalize_url(listing_url):
+                            continue
+                        # не додаємо те, що вже є в дереві категорій як відома категорія
+                        # (але дозволяємо, якщо URL новий — це якраз наш кейс, коли GPT знайшов підкатегорії)
+                        discovered_subcategories.append({"name": cat.get("name"), "url": cat_url})
+
+                    if skipped_as_category > 0:
+                        logger.warning(
+                            f"Відфільтровано {skipped_as_category} елементів як категорії/лістинги (не товари)."
+                        )
+
+                    # Якщо товарів мало/нема, але є підкатегорії — йдемо вглиб (адаптивно для різних сайтів)
+                    should_go_deeper = (
+                        depth < max_depth
+                        and len(filtered_products) == 0
+                        and len(discovered_subcategories) > 0
                     )
-                products = filtered_products
-                logger.info(f"Після фільтрації залишилось {len(products)} товарів у категорії '{category.get('name')}'")
+                    if should_go_deeper:
+                        logger.info(
+                            f"Схоже на список підкатегорій (page_type={page_type}). Переходимо вглиб: знайдено {len(discovered_subcategories)} підкатегорій."
+                        )
+                        deeper_products: list = []
+                        for sub in discovered_subcategories[:50]:  # hard-limit на кількість підкатегорій з однієї сторінки
+                            sub_url = normalize_url(sub.get("url"))
+                            if not sub_url:
+                                continue
+                            deeper_products.extend(crawl_listing(sub_url, depth + 1, max_depth, max_pages))
+                        return deeper_products
+
+                    return filtered_products
+
+                # Парсимо (і за потреби провалюємось у підкатегорії), але не більше N сторінок
+                products = crawl_listing(
+                    normalize_url(category_url),
+                    depth=0,
+                    max_depth=2,   # контрольована глибина, щоб не "краулити" весь сайт
+                    max_pages=60,  # контрольована кількість сторінок на одну вибрану категорію
+                )
+
+                logger.info(
+                    f"Після адаптивного парсингу (з фільтрами/провалюванням): {len(products)} товарів для '{category.get('name')}'"
+                )
                 
                 # Формуємо category_path для товарів (спрощена версія - використовуємо назву категорії)
                 category_path = [category.get("name", "")]

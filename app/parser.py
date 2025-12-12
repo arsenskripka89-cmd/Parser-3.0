@@ -1245,6 +1245,45 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                         return True
                     return False
 
+                def is_obviously_non_listing_url(u: str) -> bool:
+                    """
+                    Евристика: URL явно не про каталог/лістинг (блог, довідкові сторінки, корзина, акаунт тощо).
+                    Це потрібне, щоб не ходити в /blog/... як у "наступну сторінку" пагінації.
+                    """
+                    if not u:
+                        return True
+                    path = urlsplit(u).path.lower()
+                    bad_fragments = [
+                        "/blog/", "/news/", "/article", "/articles/", "/post/", "/posts/",
+                        "/about", "/contacts", "/contact", "/delivery", "/payment", "/warranty",
+                        "/guarantee", "/return", "/faq", "/search", "/login", "/register",
+                        "/account", "/cart", "/checkout", "/privacy", "/terms",
+                    ]
+                    return any(x in path for x in bad_fragments)
+
+                root_listing_url_norm = normalize_url(category_url)
+                root_parsed = urlsplit(root_listing_url_norm) if root_listing_url_norm else None
+                root_netloc_clean = (root_parsed.netloc.lower().replace("www.", "") if root_parsed else "")
+                root_path_prefix = (root_parsed.path.lower().rsplit("/", 1)[0] if root_parsed else "")
+
+                def is_within_root_section(u: str) -> bool:
+                    """
+                    Повертає True, якщо URL належить тому ж домену і знаходиться в тій самій секції каталогу,
+                    що й вихідний URL вибраної категорії. Це запобігає переходам у блог/статті через помилкову пагінацію.
+                    """
+                    if not u or not root_parsed:
+                        return False
+                    try:
+                        up = urlsplit(u)
+                        netloc_clean = up.netloc.lower().replace("www.", "")
+                        if netloc_clean != root_netloc_clean:
+                            return False
+                        if not root_path_prefix:
+                            return True
+                        return up.path.lower().startswith(root_path_prefix)
+                    except Exception:
+                        return False
+
                 visited_listing_urls: set = set()
 
                 def crawl_listing(listing_url: str, depth: int, max_depth: int, max_pages: int) -> List[Dict]:
@@ -1262,7 +1301,17 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                     visited_listing_urls.add(listing_url)
 
                     logger.info(f"Парсинг сторінки категорії/лістингу (depth={depth}): {listing_url}")
-                    parsed = client.parse_category_products(listing_url)
+                    try:
+                        parsed = client.parse_category_products(listing_url)
+                    except Exception as e:
+                        # Якщо впала початкова сторінка вибраної категорії — це реальна помилка категорії.
+                        # Якщо впала "вторинна" сторінка (помилкова пагінація/випадковий URL) — не валимо весь процес.
+                        if root_listing_url_norm and listing_url == root_listing_url_norm:
+                            raise
+                        logger.warning(
+                            f"Пропускаємо сторінку (помилка парсингу лістингу): {listing_url}. Причина: {str(e)}"
+                        )
+                        return []
 
                     page_type = "unknown"
                     raw_products = []
@@ -1349,15 +1398,27 @@ async def discover_products(task_id: str, competitor_id: str, category_ids: list
                                 continue
                             if next_norm in visited_listing_urls:
                                 continue
+                            # Не ходимо в блог/довідкові сторінки та за межі секції каталогу
+                            if is_obviously_non_listing_url(next_norm):
+                                continue
+                            if not is_within_root_section(next_norm):
+                                continue
                             if len(visited_listing_urls) >= max_pages:
                                 break
-                            all_products.extend(crawl_listing(next_norm, depth, max_depth, max_pages))
+                            try:
+                                all_products.extend(crawl_listing(next_norm, depth, max_depth, max_pages))
+                            except Exception as e:
+                                # Не валимо категорію через проблемну "наступну" сторінку; зберігаємо те, що вже знайшли.
+                                logger.warning(
+                                    f"Пропускаємо сторінку пагінації {next_norm} через помилку: {str(e)}"
+                                )
+                                continue
 
                     return all_products
 
                 # Парсимо (і за потреби провалюємось у підкатегорії), але не більше N сторінок
                 products = crawl_listing(
-                    normalize_url(category_url),
+                    root_listing_url_norm,
                     depth=0,
                     max_depth=2,   # контрольована глибина, щоб не "краулити" весь сайт
                     max_pages=60,  # контрольована кількість сторінок на одну вибрану категорію
